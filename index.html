@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hütten-Style – Landingpage</title>
+  <meta name="description" content="Hochzeits- & Eventlocation im Hütten-Style.">
+  <style>body{font-family:system-ui,Segoe UI,Roboto;margin:0} .wrap{max-width:960px;margin:40px auto;padding:0 16px}</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1 id="hero-headline">Hochzeits- & Eventlocation im Hütten-Style</h1>
+    <p id="hero-subline">warm · rustikal · festlich</p>
+    <p id="hero-lead">Beige-Töne, Holz & Kerzenlicht – romantisch und gemütlich.</p>
+
+    <h2>Galerie</h2>
+    <div id="gallery" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px"></div>
+
+    <h2>Kontakt</h2>
+    <p><strong>Adresse:</strong> <span id="addr">Musterstraße 1, 86150 Beispielstadt</span></p>
+    <p><strong>Telefon:</strong> <a id="tel" href="tel:+490000000000">+49 000 000000</a> ·
+       <strong>E‑Mail:</strong> <a id="mail" href="mailto:hallo@deine-huette.de">hallo@deine-huette.de</a></p>
+
+    <hr>
+    <p><em>Hinweis:</em> Ersetze diese Placeholder-Seite später durch dein vollständiges Landingpage‑HTML aus dem Canvas.
+    Der JSON‑Loader unten befüllt Headline/Subline/Lead, Galerie und Kontakt automatisch aus <code>content/content.json</code>.</p>
+  </div>
+
+  <script>
+  (async function(){
+    try{
+      const res = await fetch('/content/content.json', {cache:'no-store'});
+      const data = await res.json();
+
+      // Hero
+      const hl=document.getElementById('hero-headline'),
+            sl=document.getElementById('hero-subline'),
+            ld=document.getElementById('hero-lead');
+      if(hl && data.hero?.headline) hl.textContent = data.hero.headline;
+      if(sl && data.hero?.subline) sl.textContent = data.hero.subline;
+      if(ld && data.hero?.lead)    ld.textContent = data.hero.lead;
+
+      // Kontakt
+      const tel=document.getElementById('tel'),
+            mail=document.getElementById('mail'),
+            addr=document.getElementById('addr');
+      if(tel && data.kontakt?.telefon){ tel.textContent=data.kontakt.telefon; tel.href='tel:'+data.kontakt.telefon.replace(/\s+/g,''); }
+      if(mail && data.kontakt?.email){ mail.textContent=data.kontakt.email; mail.href='mailto:'+data.kontakt.email; }
+      if(addr && data.kontakt?.adresse){ addr.textContent=data.kontakt.adresse; }
+
+      // Galerie: akzeptiert Strings ODER Objekte {src|image|item}
+      const gal=document.getElementById('gallery');
+      if(gal && Array.isArray(data.galerie)){
+        gal.innerHTML='';
+        data.galerie.forEach((item,i)=>{
+          const src = typeof item==='string' ? item : (item?.src||item?.image||item?.item||'');
+          if(!src) return;
+          const img = document.createElement('img');
+          img.src = src; img.alt = 'Galerie '+(i+1); img.loading='lazy'; img.style.width='100%'; img.style.height='auto';
+          gal.appendChild(img);
+        });
+      }
+    }catch(e){ console.warn('content.json konnte nicht geladen werden:', e); }
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "headline": "Hochzeits- & Eventlocation im Hütten-Style",
+    "subline": "warm · rustikal · festlich",
+    "lead": "Beige‑Töne, Holz & Kerzenlicht: romantisch und gemütlich.",
+    "heroImage": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop"
+  },
+  "kontakt": {
+    "telefon": "+49 000 000000",
+    "email": "hallo@deine-huette.de",
+    "adresse": "Musterstraße 1, 86150 Beispielstadt"
+  },
+  "galerie": [
+    "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522008519805-b6d2a1680ad0?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop"
+  ]
+}

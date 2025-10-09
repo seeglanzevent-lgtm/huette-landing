@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/uploads"
+public_folder: "/static/uploads"
+
+locale: "de"
+
+collections:
+  - name: "inhalt"
+    label: "Inhalte"
+    files:
+      - file: "content/content.json"
+        label: "Landingpage Inhalte"
+        name: "content"
+        editor: { preview: false }
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Überschrift", name: "headline", widget: "string" }
+              - { label: "Subline",    name: "subline",  widget: "string" }
+              - { label: "Lead-Text",  name: "lead",     widget: "text" }
+              - { label: "Hero-Bild URL", name: "heroImage", widget: "string" }
+          - label: "Kontakt"
+            name: "kontakt"
+            widget: "object"
+            fields:
+              - { label: "Telefon", name: "telefon", widget: "string" }
+              - { label: "E-Mail",  name: "email",   widget: "string" }
+              - { label: "Adresse", name: "adresse", widget: "string" }
+          - label: "Galerie (Bild-URLs)"
+            name: "galerie"
+            widget: "list"
+            field: { label: "Bild-URL", name: "src", widget: "string" }
