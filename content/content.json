@@ -13,6 +13,12 @@
   "galerie": [
     "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1522008519805-b6d2a1680ad0?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop   # (1) tall – festliche Tafel, Kerzen",
+    "https://images.unsplash.com/photo-1522008519805-b6d2a1680ad0?q=80&w=1200&auto=format&fit=crop   # (2) Tanz/Moment",
+    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop   # (3) Details/Deko",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop  # (4) wide – Außenbereich abends",
+    "https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1200&auto=format&fit=crop   # (5) Dessert/Bar in Naturtönen",
+    "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop   # (6) freie Trauung/Boho"
   ]
 }
