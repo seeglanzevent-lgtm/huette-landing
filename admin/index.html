@@ -1,21 +1,108 @@
 <!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Admin</title>
-  <!-- Netlify Identity -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <!-- Decap CMS (pinned & defer) -->
-  <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js" defer></script>
-</head>
-<body>
-  <div id="nc-root"></div>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', (user) => { if (!user) window.netlifyIdentity.open('login'); });
-      window.netlifyIdentity.on('login', () => window.location.reload());
-      window.netlifyIdentity.init({});
-    }
-  </script>
-</body>
-</html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seeglanzevent – Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--beige:#f3eee7;--beige-2:#efe7dd;--beige-3:#e7dfd5;--green:#3b5d3f;--text:#2b2b2b}
+  *{box-sizing:border-box}html,body{margin:0;background:var(--beige);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:980px;margin:0 auto;padding:24px}
+  h1{margin:0 0 12px}
+  .card{background:#fff;border:1px solid var(--beige-3);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);padding:18px}
+  label{font-weight:600}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--beige-3);border-radius:12px;background:#fff;margin:6px 0 14px}
+  textarea{min-height:120px}
+  .grid{display:grid;gap:16px}
+  .two{grid-template-columns:1fr 1fr} @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .btn{background:var(--green);color:#fff;padding:12px 16px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+  .btn.secondary{background:transparent;color:var(--green);border:1px solid var(--green)}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .small{opacity:.8;font-size:12px}
+  .notice{padding:10px 12px;border-radius:10px;background:#eaf7ea;color:#1a6e1a;border:1px solid #cde8cd;display:none;margin-top:8px}
+  .error{background:#fdeaea;color:#a11;border-color:#f3c3c3}
+</style>
+
+<div class="wrap">
+  <h1>Seeglanzevent – Inhalte bearbeiten</h1>
+
+  <div class="card">
+    <div class="row">
+      <label for="pw">Admin-Passwort</label>
+      <input id="pw" type="password" placeholder="Passwort" style="max-width:280px">
+      <button class="btn secondary" id="reload">Inhalte neu laden</button>
+    </div>
+    <div class="small">Passwort wird nur lokal im Browser verwendet.</div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <h2>Hero</h2>
+      <label>Überschrift</label><input id="hero_headline">
+      <label>Subline</label><input id="hero_subline">
+      <label>Lead</label><textarea id="hero_lead"></textarea>
+      <label>Hero-Bild URL</label><input id="hero_image" placeholder="https://…">
+    </div>
+
+    <div class="card">
+      <h2>Kontakt</h2>
+      <label>Telefon</label><input id="kontakt_tel">
+      <label>E-Mail</label><input id="kontakt_mail">
+      <label>Adresse</label><input id="kontakt_addr">
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2>Galerie (eine Bild-URL je Zeile)</h2>
+    <textarea id="galerie" placeholder="https://bild1.jpg&#10;https://bild2.jpg"></textarea>
+    <div class="small">Tipp: 1200–1600 px Breite, &lt; 250 KB pro Bild.</div>
+  </div>
+
+  <div class="row" style="margin-top:16px">
+    <button class="btn" id="save">Änderungen speichern</button>
+    <div id="msg" class="notice">Gespeichert! Gleich ist die Seite live.</div>
+    <div id="err" class="notice error"></div>
+  </div>
+</div>
+
+<script>
+const api = "/.netlify/functions/content";
+let currentSha = null;
+const $ = (id)=>document.getElementById(id);
+const fill = (data)=>{
+  $("hero_headline").value = data.hero?.headline || "";
+  $("hero_subline").value  = data.hero?.subline  || "";
+  $("hero_lead").value     = data.hero?.lead     || "";
+  $("hero_image").value    = data.hero?.heroImage|| "";
+  $("kontakt_tel").value   = data.kontakt?.telefon || "";
+  $("kontakt_mail").value  = data.kontakt?.email   || "";
+  $("kontakt_addr").value  = data.kontakt?.adresse || "";
+  $("galerie").value       = Array.isArray(data.galerie)? data.galerie.map(x=>typeof x==='string'?x:(x?.src||"")).filter(Boolean).join("\n") : "";
+};
+async function load(){
+  $("msg").style.display = "none"; $("err").style.display = "none";
+  const r = await fetch(api, { credentials:"same-origin" });
+  const j = await r.json();
+  if(!r.ok){ $("err").textContent = j.error || "Fehler beim Laden"; $("err").style.display="block"; return; }
+  currentSha = j.sha; fill(j.content || {});
+}
+$("reload").onclick = load;
+
+async function save(){
+  const password = $("pw").value.trim();
+  if(!password){ alert("Bitte Admin-Passwort eingeben."); return; }
+  const galerie = $("galerie").value.split("\n").map(s=>s.trim()).filter(Boolean);
+  const content = {
+    hero: { headline:$("hero_headline").value, subline:$("hero_subline").value, lead:$("hero_lead").value, heroImage:$("hero_image").value },
+    kontakt: { telefon:$("kontakt_tel").value, email:$("kontakt_mail").value, adresse:$("kontakt_addr").value },
+    galerie
+  };
+  const r = await fetch(api, { method:"POST", headers:{ "content-type":"application/json" }, body: JSON.stringify({ password, content, sha: currentSha }) });
+  const j = await r.json();
+  if(!r.ok){ $("err").textContent = j.error || "Fehler beim Speichern"; $("err").style.display="block"; return; }
+  $("msg").style.display="block";
+}
+$("save").onclick = save;
+load();
+</script>
