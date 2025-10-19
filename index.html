@@ -1,335 +1,108 @@
 <!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Seeglanzevent – Hochzeitslocation im Hütten‑Style</title>
-  <meta name="description" content="Seeglanzevent: rustikale Hütten‑Eventlocation in Nordendorf. Warme Beige‑Töne, stimmungsvolle Deko, flexible Bestuhlung. 140 Gäste innen · 300 außen. Jetzt Verfügbarkeit prüfen & unverbindlich anfragen.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --beige:#f3eee7; --beige-2:#efe7dd; --beige-3:#e7dfd5; --green:#3b5d3f; --green-2:#2e4a32; --text:#2b2b2b; --gold:#b08d57; --shadow:0 10px 30px rgba(0,0,0,.08);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--beige);color:var(--text)}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; line-height:1.55}
-    h1,h2,h3{font-family:"Playfair Display",Georgia,serif; line-height:1.15; margin:0 0 .5rem}
-    .script{font-family:"Great Vibes", cursive; color:var(--gold); font-weight:400}
-    a{color:inherit}
-    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-    .btn{display:inline-block;background:var(--green);color:#fff;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
-    .btn:hover{background:var(--green-2)}
-    .ghost{background:transparent;border:1px solid var(--green);color:var(--green)}
-    section[id], header[id] { scroll-margin-top: 80px; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seeglanzevent – Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--beige:#f3eee7;--beige-2:#efe7dd;--beige-3:#e7dfd5;--green:#3b5d3f;--text:#2b2b2b}
+  *{box-sizing:border-box}html,body{margin:0;background:var(--beige);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:980px;margin:0 auto;padding:24px}
+  h1{margin:0 0 12px}
+  .card{background:#fff;border:1px solid var(--beige-3);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);padding:18px}
+  label{font-weight:600}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--beige-3);border-radius:12px;background:#fff;margin:6px 0 14px}
+  textarea{min-height:120px}
+  .grid{display:grid;gap:16px}
+  .two{grid-template-columns:1fr 1fr} @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .btn{background:var(--green);color:#fff;padding:12px 16px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+  .btn.secondary{background:transparent;color:var(--green);border:1px solid var(--green)}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .small{opacity:.8;font-size:12px}
+  .notice{padding:10px 12px;border-radius:10px;background:#eaf7ea;color:#1a6e1a;border:1px solid #cde8cd;display:none;margin-top:8px}
+  .error{background:#fdeaea;color:#a11;border-color:#f3c3c3}
+</style>
 
-    /* Top Bar */
-    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);background:rgba(243,238,231,.85);border-bottom:1px solid var(--beige-3)}
-    .topbar .inner{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:10px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg, #d9c9b6, #f4efe7);display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--beige-3)}
-    .brand-title{font-family:"Playfair Display";font-weight:700}
-    .nav-cta{display:flex;align-items:center;gap:10px}
+<div class="wrap">
+  <h1>Seeglanzevent – Inhalte bearbeiten</h1>
 
-    /* Hero */
-    .hero{position:relative;min-height:78vh;display:grid;align-items:center}
-    .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;/* Filter entfernt */ filter:none}
-    .hero::after{content:"";position:absolute;inset:0;/* Overlay entfernt */ background:none;pointer-events:none}
-    .hero .content{position:relative;padding:80px 0}
-    /* Scrim nur hinter dem Text für bessere Lesbarkeit */
-    .hero .content::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(900px 380px at 30% 45%, rgba(0,0,0,.55) 0%, rgba(0,0,0,.28) 50%, rgba(0,0,0,0) 70%)}
-    .hero h1,.hero .script,.hero .lead{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55), 0 0 2px rgba(0,0,0,.35)}
-    .tag{display:inline-block;background:#fff7ef;border:1px solid var(--beige-3);padding:6px 12px;border-radius:999px;font-size:14px;box-shadow:var(--shadow)}
-    .lead{font-size:18px;max-width:740px;margin:10px 0 22px}
+  <div class="card">
+    <div class="row">
+      <label for="pw">Admin-Passwort</label>
+      <input id="pw" type="password" placeholder="Passwort" style="max-width:280px">
+      <button class="btn secondary" id="reload">Inhalte neu laden</button>
+    </div>
+    <div class="small">Passwort wird nur lokal im Browser verwendet.</div>
+  </div>
 
-    /* Sections */
-    .section{padding:64px 0}
-    .grid{display:grid;gap:26px}
-    .two{grid-template-columns:1.2fr .8fr}
-    .two-rev{grid-template-columns:.9fr 1.1fr}
-    @media (max-width:980px){.two,.two-rev{grid-template-columns:1fr}}
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <h2>Hero</h2>
+      <label>Überschrift</label><input id="hero_headline">
+      <label>Subline</label><input id="hero_subline">
+      <label>Lead</label><textarea id="hero_lead"></textarea>
+      <label>Hero-Bild URL</label><input id="hero_image" placeholder="https://…">
+    </div>
 
-    .card{background:#fff;border:1px solid var(--beige-3);border-radius:16px;box-shadow:var(--shadow)}
-
-    /* Mittleres Bild: fixiertes Seitenverhältnis (kein "zu langes" Auslaufen) */
-    .media{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--beige-3);aspect-ratio:3/2}
-    .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    @media (max-width:560px){ .media{aspect-ratio:4/3} }
-
-    /* Icons */
-    .icon{width:22px;height:22px;display:inline-block;margin-right:8px}
-
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}
-    .gallery img{width:100%;object-fit:cover;border-radius:14px;border:1px solid var(--beige-3);aspect-ratio:4/3;height:auto}
-    .gallery img.tall{aspect-ratio:3/4}
-    .gallery img.wide{aspect-ratio:16/9}
-    .gallery .tall{grid-row:span 2}
-    .gallery .wide{grid-column:span 2}
-    @media (max-width:980px){.gallery{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.gallery{grid-template-columns:1fr}}
-
-    /* Form */
-    form{display:grid;gap:12px}
-    label{font-size:14px;opacity:.9}
-    input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--beige-3);border-radius:12px;background:#fff;font-size:16px}
-    .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:560px){.cols{grid-template-columns:1fr}}
-    .small{font-size:12px;opacity:.8}
-
-    /* Divider */
-    .divider{height:14px;background:repeating-linear-gradient(135deg, #e9e1d7 0 12px, #efe7dd 12px 24px);border-top:1px solid #e1d8cc;border-bottom:1px solid #e1d8cc}
-
-    /* Footer */
-    footer{background:var(--beige-2);border-top:1px solid var(--beige-3)}
-    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    @media (max-width:720px){.footgrid{grid-template-columns:1fr}}
-
-    /* Anim */
-    .fade-up{animation:fadeUp .7s ease both}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-    /* Extra Mobile Tweaks */
-    @media (max-width:480px){ .section{padding:44px 0} .hero{min-height:70vh} .lead{font-size:16px} }
-  </style>
-  
-</head>
-<body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="wrap inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">✨</div>
-        <div>
-          <div class="script" style="font-size:24px;line-height:1">Seeglanzevent</div>
-          <div class="brand-title" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase">Hochzeit & Feiern</div>
-        </div>
-      </div>
-      <div class="nav-cta">
-        <a class="btn ghost" href="#galerie">Galerie</a>
-        <a class="btn" href="#anfrage">Verfügbarkeit prüfen</a>
-      </div>
+    <div class="card">
+      <h2>Kontakt</h2>
+      <label>Telefon</label><input id="kontakt_tel">
+      <label>E-Mail</label><input id="kontakt_mail">
+      <label>Adresse</label><input id="kontakt_addr">
     </div>
   </div>
 
-  <!-- Hero -->
-  <header class="hero" id="hero">
-    <div class="bg" role="img" aria-label="Rustikale Hütte, festlich dekoriert"></div>
-    <div class="wrap content fade-up">
-      <span class="tag">Seeglanzevent · Hochzeitslocation im Hütten‑Style</span>
-      <h1 id="hero-headline" style="font-size:clamp(32px,6vw,56px);margin:.4rem 0 .2rem">Hochzeits‑ & Eventlocation im Hütten‑Style</h1>
-      <p class="script" id="hero-subline" style="font-size:32px;margin:4px 0 10px">warm · rustikal · festlich</p>
-      <p class="lead" id="hero-lead">Beige‑Töne, Holz & Kerzenlicht: romantisch & gemütlich. <strong>140 Gäste innen</strong> · <strong>300 außen</strong>. In Nordendorf bei Augsburg – ideal für Hochzeit, freie Trauung, Jubiläum & Firmenfeier.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="#anfrage">Jetzt anfragen</a>
-        <a class="btn ghost" href="#pakete">Pakete ansehen</a>
-      </div>
-    </div>
-  </header>
+  <div class="card" style="margin-top:16px">
+    <h2>Galerie (eine Bild-URL je Zeile)</h2>
+    <textarea id="galerie" placeholder="https://bild1.jpg&#10;https://bild2.jpg"></textarea>
+    <div class="small">Tipp: 1200–1600 px Breite, &lt; 250 KB pro Bild.</div>
+  </div>
 
-  <div class="divider" aria-hidden="true"></div>
+  <div class="row" style="margin-top:16px">
+    <button class="btn" id="save">Änderungen speichern</button>
+    <div id="msg" class="notice">Gespeichert! Gleich ist die Seite live.</div>
+    <div id="err" class="notice error"></div>
+  </div>
+</div>
 
-  <!-- USPs + Bild -->
-  <section class="section" id="usps">
-    <div class="wrap grid two">
-      <div class="fade-up">
-        <h2>Warum Seeglanzevent perfekt für eure Feier ist</h2>
-        <ul style="list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px">
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> Stilvoller Hütten‑Look in warmen Beige‑ und Naturtönen</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> <strong>140 innen · 300 außen</strong> – flexibel für Trauung, Dinner & Party</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> Empfehlungen für Foto, Deko, Musik & Trauredner</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> Eigene Getränke / Catering möglich oder Full‑Service</li>
-        </ul>
-        <div style="margin-top:16px" class="small">Hinweis: Kapazitäten & Aufbauten nach Absprache – wir planen gemeinsam euer perfektes Setting.</div>
-      </div>
-      <figure class="card media fade-up">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="Festlich gedeckte Tafel im Hüttenstil">
-      </figure>
-    </div>
-  </section>
+<script>
+const api = "/.netlify/functions/content";
+let currentSha = null;
+const $ = (id)=>document.getElementById(id);
+const fill = (data)=>{
+  $("hero_headline").value = data.hero?.headline || "";
+  $("hero_subline").value  = data.hero?.subline  || "";
+  $("hero_lead").value     = data.hero?.lead     || "";
+  $("hero_image").value    = data.hero?.heroImage|| "";
+  $("kontakt_tel").value   = data.kontakt?.telefon || "";
+  $("kontakt_mail").value  = data.kontakt?.email   || "";
+  $("kontakt_addr").value  = data.kontakt?.adresse || "";
+  $("galerie").value       = Array.isArray(data.galerie)? data.galerie.map(x=>typeof x==='string'?x:(x?.src||"")).filter(Boolean).join("\n") : "";
+};
+async function load(){
+  $("msg").style.display = "none"; $("err").style.display = "none";
+  const r = await fetch(api, { credentials:"same-origin" });
+  const j = await r.json();
+  if(!r.ok){ $("err").textContent = j.error || "Fehler beim Laden"; $("err").style.display="block"; return; }
+  currentSha = j.sha; fill(j.content || {});
+}
+$("reload").onclick = load;
 
-  <!-- Galerie -->
-  <section id="galerie" class="section" style="background:var(--beige-2)">
-    <div class="wrap">
-      <h2>Stimmung & Eindrücke</h2>
-      <p class="small" style="margin:6px 0 16px">Ersetzt die Bilder gern durch eure eigenen – Dateigröße < 250 KB je Bild für schnelle Ladezeiten.</p>
-      <div id="gallery" class="gallery">
-        <img class="tall" src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop" alt="Hochzeitstafel mit Kerzen in Beige">
-        <img src="https://images.unsplash.com/photo-1487537023671-8dce1a785863?q=80&w=1200&auto=format&fit=crop" alt="Brautpaar tanzt bei warmem Licht">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop" alt="Rustikale Holzdetails und Dekoration">
-        <img class="wide" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop" alt="Außenbereich mit Lichterkette">
-        <img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1200&auto=format&fit=crop" alt="Dessertbar in Naturtönen">
-        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop" alt="Freie Trauung im Boho‑Look">
-      </div>
-    </div>
-  </section>
-
-  <!-- Pakete -->
-  <section id="pakete" class="section">
-    <div class="wrap">
-      <h2>Pakete & Möglichkeiten</h2>
-      <div class="grid two-rev" style="align-items:start">
-        <div class="card" style="padding:20px">
-          <h3>Hochzeit</h3>
-          <p>Trauung & Feier an einem Ort – vom Sektempfang bis zur Party. Auf Wunsch inklusive Dekokonzept in Beige-/Naturtönen.</p>
-          <ul>
-            <li>Empfang mit Aperitif & Fingerfood</li>
-            <li>Festliche Tafel oder runde Tische</li>
-            <li>Tanzfläche, Musik & Licht</li>
-          </ul>
-          <a class="btn" href="#anfrage">Termin anfragen</a>
-        </div>
-        <div class="grid" style="gap:16px">
-          <div class="card" style="padding:20px">
-            <h3>Geburtstag & Jubiläum</h3>
-            <p>Gemütliche Feier im Hütten‑Ambiente – individuell nach euren Wünschen.</p>
-          </div>
-          <div class="card" style="padding:20px">
-            <h3>Firmenfeier</h3>
-            <p>Weihnachtsfeier, Teamevent oder Sommerfest – mit Hütten‑Flair und professioneller Betreuung.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="section" style="background:#fff">
-    <div class="wrap">
-      <h2>Das sagen unsere Gäste</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr 1fr">
-        <div class="card" style="padding:18px"><p>„Genau unser Stil – warm, elegant und super organisiert.“</p><div class="small">— L.&nbsp;und&nbsp;T., Hochzeit</div></div>
-        <div class="card" style="padding:18px"><p>„Die Beige‑Deko in Kombination mit Holz: einfach traumhaft.“</p><div class="small">— M.&nbsp;K., Geburtstagsfeier</div></div>
-        <div class="card" style="padding:18px"><p>„Top Betreuung, von Technik bis Ablauf. Absolut empfehlenswert!“</p><div class="small">— A.&nbsp;S., Firmenfeier</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Anfrageformular -->
-  <section id="anfrage" class="section">
-    <div class="wrap grid two">
-      <div>
-        <h2>Verfügbarkeit prüfen & Angebot erhalten</h2>
-        <p class="small">Füllt das Formular aus – wir melden uns in der Regel innerhalb von 24 Stunden.</p>
-        <form name="anfrage" method="POST" netlify netlify-honeypot="bot-field" action="/danke/">
-          <input type="hidden" name="form-name" value="anfrage">
-          <p style="display:none"><label>Bitte leer lassen: <input name="bot-field"></label></p>
-          <div class="cols">
-            <div>
-              <label for="name">Name*</label>
-              <input id="name" name="name" required>
-            </div>
-            <div>
-              <label for="email">E‑Mail*</label>
-              <input id="email" name="email" type="email" required>
-            </div>
-          </div>
-          <div class="cols">
-            <div>
-              <label for="phone">Telefon*</label>
-              <input id="phone" name="phone" required>
-            </div>
-            <div>
-              <label for="event">Anlass*</label>
-              <select id="event" name="event" required>
-                <option value="">Bitte wählen</option>
-                <option>Hochzeit</option>
-                <option>Freie Trauung</option>
-                <option>Geburtstag</option>
-                <option>Jubiläum</option>
-                <option>Firmenevent</option>
-                <option>Sonstiges</option>
-              </select>
-            </div>
-          </div>
-          <div class="cols">
-            <div>
-              <label for="date">Wunschtermin</label>
-              <input id="date" name="date" type="date">
-            </div>
-            <div>
-              <label for="guests">Gäste (ca.)</label>
-              <input id="guests" name="guests" type="number" min="10" step="1" placeholder="z. B. 80">
-            </div>
-          </div>
-          <div>
-            <label for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="4" placeholder="Was ist euch wichtig? Deko in Beige/Boho, Trauung vor Ort, Technik …"></textarea>
-          </div>
-          <button class="btn" type="submit">Anfrage senden</button>
-          <div class="small" style="margin-top:8px">Mit dem Absenden akzeptiert ihr unsere <a href="#">Datenschutzbestimmungen</a>.</div>
-        </form>
-      </div>
-      <aside class="card" style="padding:22px">
-        <h3>Kontakt</h3>
-        <p id="addr"><strong>Seeglanzevent – Hochzeitslocation</strong><br> Boschstraße, 86695 Nordendorf</p>
-        <p>Tel. <a id="tel" href="tel:+490000000000">+49 000 000000</a><br>E‑Mail <a id="mail" href="mailto:hallo@seeglanzevent.de">hallo@seeglanzevent.de</a></p>
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--beige-3);height:220px">
-          <iframe title="Seeglanzevent Karte" width="100%" height="220" frameborder="0" style="border:0;filter:saturate(110%) contrast(1.05)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Boschstraße,+86695+Nordendorf&output=embed"></iframe>
-        </div>
-        <div class="small" style="margin-top:6px"><a href="https://www.google.com/maps/search/?api=1&query=Boschstraße,+86695+Nordendorf" target="_blank" rel="noopener">In Google Maps öffnen</a></div>
-      </aside>
-    </div>
-  </section>
-
-  <footer class="section">
-    <div class="wrap footgrid">
-      <div>
-        <div class="script" style="font-size:28px">Bis bald bei Seeglanzevent</div>
-        <p class="small">Impressum · Datenschutz · AGB</p>
-      </div>
-      <div>
-        <p class="small">© <span id="y"></span> Seeglanzevent – Hochzeits‑ & Eventlocation. Alle Rechte vorbehalten.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-
-  <!-- JSON‑Loader: robust (Strings ODER Objekte in der Galerie) -->
-  <script>
-  (async function(){
-    try{
-      const res = await fetch('/content/content.json', {cache:'no-store'});
-      if(!res.ok) throw new Error('HTTP '+res.status);
-      const data = await res.json();
-      const hl = document.getElementById('hero-headline');
-      const sl = document.getElementById('hero-subline');
-      const ld = document.getElementById('hero-lead');
-      if(hl && data.hero?.headline) hl.textContent = data.hero.headline;
-      if(sl && data.hero?.subline)  sl.textContent = data.hero.subline;
-      if(ld && data.hero?.lead)     ld.textContent = data.hero.lead;
-      const bg = document.querySelector('.hero .bg');
-      if(bg && data.hero?.heroImage){
-        bg.style.backgroundImage = 'url('+data.hero.heroImage+')';
-        bg.style.backgroundSize = 'cover';
-        bg.style.backgroundPosition = 'center';
-        bg.style.filter = 'none'; // sicherstellen, dass kein Filter greift
-      }
-      const tel = document.getElementById('tel');
-      const mail = document.getElementById('mail');
-      const addr = document.getElementById('addr');
-      if(tel && data.kontakt?.telefon){ tel.textContent = data.kontakt.telefon; tel.href = 'tel:'+ data.kontakt.telefon.replace(/\s+/g,''); }
-      if(mail && data.kontakt?.email){  mail.textContent = data.kontakt.email;   mail.href = 'mailto:'+ data.kontakt.email; }
-      if(addr && data.kontakt?.adresse){ addr.innerHTML = '<strong>Seeglanzevent – Hochzeitslocation</strong><br> '+ data.kontakt.adresse; }
-
-      const gal = document.getElementById('gallery');
-      if(gal && Array.isArray(data.galerie)){
-        gal.innerHTML = '';
-        data.galerie.forEach(function(item,i){
-          const src = typeof item === 'string' ? item : (item?.src || item?.image || item?.item || '');
-          if(!src) return;
-          var img = document.createElement('img');
-          img.src = src; img.alt = 'Galerie '+(i+1); img.loading = 'lazy';
-          if(i===0) img.classList.add('tall');
-          if(i===3) img.classList.add('wide');
-          gal.appendChild(img);
-        });
-      }
-    }catch(e){ console.warn('CMS-Content konnte nicht geladen werden:', e); }
-  })();
-  </script>
-</body>
-</html>
+async function save(){
+  const password = $("pw").value.trim();
+  if(!password){ alert("Bitte Admin-Passwort eingeben."); return; }
+  const galerie = $("galerie").value.split("\n").map(s=>s.trim()).filter(Boolean);
+  const content = {
+    hero: { headline:$("hero_headline").value, subline:$("hero_subline").value, lead:$("hero_lead").value, heroImage:$("hero_image").value },
+    kontakt: { telefon:$("kontakt_tel").value, email:$("kontakt_mail").value, adresse:$("kontakt_addr").value },
+    galerie
+  };
+  const r = await fetch(api, { method:"POST", headers:{ "content-type":"application/json" }, body: JSON.stringify({ password, content, sha: currentSha }) });
+  const j = await r.json();
+  if(!r.ok){ $("err").textContent = j.error || "Fehler beim Speichern"; $("err").style.display="block"; return; }
+  $("msg").style.display="block";
+}
+$("save").onclick = save;
+load();
+</script>
