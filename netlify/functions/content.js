@@ -1,86 +1,93 @@
-// netlify/functions/content.js
-export default async (req, context) => {
-  const {
-    GH_TOKEN,     // GitHub PAT (fine-grained)
-    GH_OWNER,     // z.B. "seeglanzevent-lgtm"
-    GH_REPO,      // z.B. "huette-landing"
-    GH_BRANCH = "main",
-    ADMIN_PASSWORD,
-    ALLOWED_ORIGIN // optional: z.B. "https://deine-seite.netlify.app"
-  } = process.env;
+// netlify/functions/content.js  (Runtime v2 – liefert Response)
+const FILE_PATH = "content/content.json";
 
-  const FILE_PATH = "content/content.json";
-  const api = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${FILE_PATH}`;
-
-  const allowOrigin = (origin) =>
-    ALLOWED_ORIGIN ? ALLOWED_ORIGIN : (origin || "*");
-
-  const send = (status, body, headers = {}) => ({
-    statusCode: status,
+const json = (data, { status = 200, headers = {} } = {}, origin, ALLOWED_ORIGIN) =>
+  new Response(JSON.stringify(data, null, 2), {
+    status,
     headers: {
       "content-type": "application/json",
-      "access-control-allow-origin": allowOrigin(req.headers?.origin),
+      "access-control-allow-origin": ALLOWED_ORIGIN || origin || "*",
       "access-control-allow-headers": "content-type",
       "access-control-allow-methods": "GET,POST,OPTIONS",
       ...headers,
     },
-    body: JSON.stringify(body, null, 2),
   });
 
-  if (req.method === "OPTIONS") return send(204, {});
+const ghFetch = (url, GH_TOKEN, init = {}) =>
+  fetch(url, {
+    ...init,
+    headers: {
+      "authorization": `Bearer ${GH_TOKEN}`,
+      "user-agent": "seeglanzevent-cms",
+      "accept": "application/vnd.github+json",
+      ...(init.headers || {}),
+    },
+  });
 
-  const ghFetch = (url, init = {}) =>
-    fetch(url, {
-      ...init,
+export default async (request, context) => {
+  const {
+    GH_TOKEN,
+    GH_OWNER,
+    GH_REPO,
+    GH_BRANCH = "main",
+    ADMIN_PASSWORD,
+    ALLOWED_ORIGIN,
+  } = process.env;
+
+  const api = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${FILE_PATH}`;
+  const origin = request.headers.get("origin") || "";
+
+  // CORS preflight
+  if (request.method === "OPTIONS") {
+    return new Response("", {
+      status: 204,
       headers: {
-        "authorization": `Bearer ${GH_TOKEN}`,
-        "user-agent": "seeglanzevent-cms",
-        "accept": "application/vnd.github+json",
-        ...(init.headers || {}),
+        "access-control-allow-origin": ALLOWED_ORIGIN || origin || "*",
+        "access-control-allow-headers": "content-type",
+        "access-control-allow-methods": "GET,POST,OPTIONS",
       },
     });
+  }
 
   try {
-    if (req.method === "GET") {
-      const r = await ghFetch(`${api}?ref=${encodeURIComponent(GH_BRANCH)}`);
+    if (request.method === "GET") {
+      const r = await ghFetch(`${api}?ref=${encodeURIComponent(GH_BRANCH)}`, GH_TOKEN);
       if (r.status === 404) {
-        // Datei existiert noch nicht → leeres Grundobjekt
-        return send(200, { content: { hero:{}, kontakt:{}, galerie:[] }, sha: null });
+        return json({ content: { hero: {}, kontakt: {}, galerie: [] }, sha: null }, {}, origin, ALLOWED_ORIGIN);
       }
-      if (!r.ok) return send(r.status, { error: "GitHub GET failed", details: await r.text() });
+      if (!r.ok) return json({ error: "GitHub GET failed", details: await r.text() }, { status: r.status }, origin, ALLOWED_ORIGIN);
       const data = await r.json();
       const content = JSON.parse(Buffer.from(data.content, "base64").toString("utf8"));
-      return send(200, { content, sha: data.sha });
+      return json({ content, sha: data.sha }, {}, origin, ALLOWED_ORIGIN);
     }
 
-    if (req.method === "POST") {
-      const body = await req.json();
-      if (!body || body.password !== ADMIN_PASSWORD) return send(401, { error: "Unauthorized" });
-      if (!body.content || typeof body.content !== "object") return send(400, { error: "Missing content object" });
+    if (request.method === "POST") {
+      const body = await request.json().catch(() => ({}));
+      if (!body || body.password !== ADMIN_PASSWORD) return json({ error: "Unauthorized" }, { status: 401 }, origin, ALLOWED_ORIGIN);
+      if (!body.content || typeof body.content !== "object") return json({ error: "Missing content object" }, { status: 400 }, origin, ALLOWED_ORIGIN);
 
-      // aktuelle SHA besorgen (wenn nicht mitgegeben)
+      // aktuelle SHA besorgen, falls nicht mitgeliefert
       let sha = body.sha ?? null;
       if (!sha) {
-        const r0 = await ghFetch(`${api}?ref=${encodeURIComponent(GH_BRANCH)}`);
+        const r0 = await ghFetch(`${api}?ref=${encodeURIComponent(GH_BRANCH)}`, GH_TOKEN);
         if (r0.ok) sha = (await r0.json()).sha;
       }
 
-      const newContent = JSON.stringify(body.content, null, 2);
       const payload = {
         message: `chore(cms): update content.json`,
-        content: Buffer.from(newContent, "utf8").toString("base64"),
+        content: Buffer.from(JSON.stringify(body.content, null, 2), "utf8").toString("base64"),
         branch: GH_BRANCH,
-        ...(sha ? { sha } : {}), // sha nur senden, wenn vorhanden
+        ...(sha ? { sha } : {}),
       };
 
-      const r = await ghFetch(api, { method: "PUT", body: JSON.stringify(payload) });
-      if (!r.ok) return send(r.status, { error: "GitHub PUT failed", details: await r.text() });
+      const r = await ghFetch(api, GH_TOKEN, { method: "PUT", body: JSON.stringify(payload) });
+      if (!r.ok) return json({ error: "GitHub PUT failed", details: await r.text() }, { status: r.status }, origin, ALLOWED_ORIGIN);
       const d = await r.json();
-      return send(200, { ok: true, commit: d.commit?.sha || null });
+      return json({ ok: true, commit: d.commit?.sha || null }, {}, origin, ALLOWED_ORIGIN);
     }
 
-    return send(405, { error: "Method not allowed" });
+    return json({ error: "Method not allowed" }, { status: 405 }, origin, ALLOWED_ORIGIN);
   } catch (e) {
-    return send(500, { error: "Server error", details: String(e) });
+    return json({ error: "Server error", details: String(e) }, { status: 500 }, origin, ALLOWED_ORIGIN);
   }
 };
