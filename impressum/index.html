@@ -14,9 +14,29 @@
   h1,h2{margin:0 0 .6rem} h1{font-size:30px} h2{font-size:22px;margin-top:1.2rem}
   p,li{font-size:16px} a{color:inherit}
   .card{background:#fff;border:1px solid var(--beige-3);border-radius:16px;padding:18px}
+
+/* Back-to-home bar */
+.backbar{position:sticky;top:0;z-index:20;background:rgba(243,238,231,.95);border-bottom:1px solid var(--beige-3)}
+.backbar .inner{max-width:900px;margin:0 auto;padding:10px 20px;display:flex;justify-content:space-between;align-items:center}
+.backbtn{display:inline-block;background:#fff;border:1px solid var(--beige-3);padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+.backbtn:hover{background:var(--beige-2)}
+.brand-mini{font-weight:700;opacity:.9}
+  
 </style>
 </head>
 <body>
+
+<div class="backbar">
+  <div class="inner">
+    <div class="brand-mini">Seeglanzevent</div>
+    <div>
+      <a class="backbtn" href="/">← Zurück zur Startseite</a>
+      <!-- Optional: direkter Sprung zum Formular -->
+      <!-- <a class="backbtn" href="/#anfrage">Anfrage</a> -->
+    </div>
+  </div>
+</div>
+  
   <div class="wrap">
     <h1>Impressum</h1>
     <div class="card">
