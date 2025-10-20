@@ -1,4 +1,4 @@
-<!doctype html>
+o<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
@@ -149,6 +149,13 @@
     .cc-btn-primary{background:var(--green);color:#fff;border-color:var(--green)}
     .cc-btn-primary:hover{background:var(--green-2)}
     .cc-btn-ghost{background:#fff}
+
+/* Testimonials responsive Spalten */
+.testimonials{ grid-template-columns:1fr 1fr 1fr; }
+@media (max-width:980px){ .testimonials{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .testimonials{ grid-template-columns:1fr; } }
+
+  
   </style>
 </head>
 <body>
@@ -194,7 +201,7 @@
         <h2>Warum Seeglanzevent perfekt für eure Feier ist</h2>
         <ul style="list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px">
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> Stilvoller Hütten-Look in warmen Beige- und Naturtönen</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> <strong>140 innen · 300 außen</strong> – flexibel für Trauung, Dinner & Party</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> <strong>Platz für 140 Personan innen · 300 außen</strong> – flexibel für Trauung, Dinner & Party</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> Empfehlungen für Foto, Deko, Musik & Trauredner</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg> Eigene Getränke / Catering möglich oder Full-Service</li>
         </ul>
@@ -255,7 +262,8 @@
   <section class="section" style="background:#fff">
     <div class="wrap">
       <h2>Das sagen unsere Gäste</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr 1fr">
+   <!-- NEU -->
+<div class="grid testimonials">
         <div class="card" style="padding:18px"><p>„Genau unser Stil – warm, elegant und super organisiert.“</p><div class="small">— L.&nbsp;und&nbsp;T., Hochzeit</div></div>
         <div class="card" style="padding:18px"><p>„Die Beige-Deko in Kombination mit Holz: einfach traumhaft.“</p><div class="small">— M.&nbsp;K., Geburtstagsfeier</div></div>
         <div class="card" style="padding:18px"><p>„Top Betreuung, von Technik bis Ablauf. Absolut empfehlenswert!“</p><div class="small">— A.&nbsp;S., Firmenfeier</div></div>
