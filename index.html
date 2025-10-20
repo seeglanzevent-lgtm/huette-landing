@@ -10,7 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --beige:#f3eee7; --beige-2:#efe7dd; --beige-3:#e7dfd5; --green:#3b5d3f; --green-2:#2e4a32; --text:#2b2b2b; --gold:#b08d57; --shadow:0 10px 30px rgba(0,0,0,.08);
+      --beige:#f3eee7; --beige-2:#efe7dd; --beige-3:#e7dfd5;
+      --green:#3b5d3f; --green-2:#2e4a32;
+      --text:#2b2b2b; --gold:#b08d57; --shadow:0 10px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--beige);color:var(--text)}
@@ -22,11 +24,10 @@
     .btn{display:inline-block;background:var(--green);color:#fff;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
     .btn:hover{background:var(--green-2)}
     .ghost{background:transparent;border:1px solid var(--green);color:var(--green)}
+    /* WhatsApp Button in Primärgrün */
+    .btn-wa{background:var(--green); color:#fff}
+    .btn-wa:hover{background:var(--green-2)}
     section[id], header[id] { scroll-margin-top: 80px; }
-
-    /* WhatsApp Button */
-    .btn-wa{background:#25D366;color:#083d17}
-    .btn-wa:hover{background:#1ebe5a;color:#062d12}
 
     /* Topbar */
     .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);background:rgba(243,238,231,.85);border-bottom:1px solid var(--beige-3)}
@@ -36,7 +37,7 @@
     .brand-title{font-family:"Playfair Display";font-weight:700}
     .nav-cta{display:flex;align-items:center;gap:10px}
 
-    /* Hero (ohne störendes Overlay, nur Textschatten) */
+    /* Hero (ohne Overlay, nur Textschatten) */
     .hero{position:relative;min-height:78vh;display:grid;align-items:center}
     .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;filter:none}
     .hero::after{content:"";position:absolute;inset:0;background:none;pointer-events:none}
@@ -54,7 +55,7 @@
     @media (max-width:980px){.two,.two-rev{grid-template-columns:1fr}}
     .card{background:#fff;border:1px solid var(--beige-3);border-radius:16px;box-shadow:var(--shadow)}
 
-    /* Media block fixes (gegen zu langes Bild) */
+    /* Media block */
     .media{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--beige-3);aspect-ratio:3/2}
     .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     @media (max-width:560px){ .media{aspect-ratio:4/3} }
@@ -80,20 +81,22 @@
     @media (max-width:560px){.cols{grid-template-columns:1fr}}
     .small{font-size:12px;opacity:.8}
 
-    /* Einwilligung zentriert unter dem Formular */
-    .consent{
+    /* Consent-Box */
+    .consent-box{
       grid-column:1 / -1;
+      background:#fff;
+      border:1px solid var(--beige-3);
+      border-radius:12px;
+      padding:14px 16px;
       display:flex;
-      justify-content:center;
+      gap:12px;
       align-items:flex-start;
-      gap:10px;
-      text-align:left;
-      margin:8px 0 12px;
-      font-size:14px;
-      line-height:1.45;
+      margin:6px 0 12px;
+      box-shadow: var(--shadow);
     }
-    .consent input[type="checkbox"]{ margin-top:3px; accent-color:var(--green); }
-    .consent a{ text-decoration: underline; }
+    .consent-box input[type="checkbox"]{margin-top:3px; accent-color:var(--green);}
+    .consent-box label{font-size:14px; line-height:1.5}
+    .consent-box a{ text-decoration: underline; }
 
     /* Divider */
     .divider{height:14px;background:repeating-linear-gradient(135deg, #e9e1d7 0 12px, #efe7dd 12px 24px);border-top:1px solid #e1d8cc;border-bottom:1px solid #e1d8cc}
@@ -139,11 +142,7 @@
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" href="#anfrage">Jetzt anfragen</a>
         <a class="btn ghost" href="#pakete">Pakete ansehen</a>
-        <!-- NEU: WhatsApp im Header -->
-        <a class="btn btn-wa" target="_blank" rel="noopener"
-           href="https://wa.me/4915565629161?text=Hallo%20Seeglanzevent!%20Wir%20haben%20eine%20Anfrage%20zur%20Verf%C3%BCgbarkeit.">
-          WhatsApp-Anfrage
-        </a>
+        <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">WhatsApp-Anfrage</a>
       </div>
     </div>
   </header>
@@ -293,14 +292,18 @@
             <textarea id="message" name="message" rows="4" placeholder="Was ist euch wichtig? Deko in Beige/Boho, Trauung vor Ort, Technik …"></textarea>
           </div>
 
-          <!-- Einwilligung zentriert -->
-          <div class="consent">
-            <input id="agree" name="agree" type="checkbox" required>
-            <label for="agree">
+          <!-- Einwilligung in eigener Box -->
+          <div class="consent-box" role="group" aria-labelledby="consentLabel">
+            <input id="agree" name="agree" type="checkbox" required aria-describedby="consentLabel">
+            <label id="consentLabel" for="agree">
               Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen
               und willige in die Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage ein.
             </label>
           </div>
+
+          <!-- Optional: zusätzliche Captcha-Abwehr
+          <div data-netlify-recaptcha="true"></div>
+          -->
 
           <button class="btn" type="submit">Anfrage senden</button>
         </form>
@@ -311,13 +314,9 @@
         <p id="addr"><strong>Seeglanzevent – Hochzeitslocation</strong><br> Boschstraße, 86695 Nordendorf</p>
         <p>Tel. <a id="tel" href="tel:+490000000000">+49 000 000000</a><br>E-Mail <a id="mail" href="mailto:hallo@seeglanzevent.de">hallo@seeglanzevent.de</a></p>
 
-        <!-- NEU: WhatsApp in der Kontaktbox -->
-        <div style="margin:8px 0 12px">
-          <a class="btn btn-wa" target="_blank" rel="noopener"
-             href="https://wa.me/4915565629161?text=Hallo%20Seeglanzevent!%20Wir%20haben%20eine%20Anfrage%20zur%20Verf%C3%BCgbarkeit.">
-            WhatsApp-Anfrage
-          </a>
-        </div>
+        <p style="margin:10px 0 14px">
+          <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">WhatsApp-Anfrage</a>
+        </p>
 
         <div style="border-radius:12px;overflow:hidden;border:1px solid var(--beige-3);height:220px">
           <iframe title="Seeglanzevent Karte" width="100%" height="220" frameborder="0" style="border:0;filter:saturate(110%) contrast(1.05)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
