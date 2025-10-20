@@ -24,6 +24,10 @@
     .ghost{background:transparent;border:1px solid var(--green);color:var(--green)}
     section[id], header[id] { scroll-margin-top: 80px; }
 
+    /* WhatsApp Button */
+    .btn-wa{background:#25D366;color:#083d17}
+    .btn-wa:hover{background:#1ebe5a;color:#062d12}
+
     /* Topbar */
     .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);background:rgba(243,238,231,.85);border-bottom:1px solid var(--beige-3)}
     .topbar .inner{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:10px 0}
@@ -58,7 +62,7 @@
     /* Icons */
     .icon{width:22px;height:22px;display:inline-block;margin-right:8px}
 
-    /* Gallery (ein fehlerhaftes Bild ersetzt) */
+    /* Gallery */
     .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}
     .gallery img{width:100%;object-fit:cover;border-radius:14px;border:1px solid var(--beige-3);aspect-ratio:4/3;height:auto}
     .gallery img.tall{aspect-ratio:3/4}
@@ -135,6 +139,11 @@
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" href="#anfrage">Jetzt anfragen</a>
         <a class="btn ghost" href="#pakete">Pakete ansehen</a>
+        <!-- NEU: WhatsApp im Header -->
+        <a class="btn btn-wa" target="_blank" rel="noopener"
+           href="https://wa.me/4915565629161?text=Hallo%20Seeglanzevent!%20Wir%20haben%20eine%20Anfrage%20zur%20Verf%C3%BCgbarkeit.">
+          WhatsApp-Anfrage
+        </a>
       </div>
     </div>
   </header>
@@ -293,10 +302,6 @@
             </label>
           </div>
 
-          <!-- Optional: zusätzliche Captcha-Abwehr
-          <div data-netlify-recaptcha="true"></div>
-          -->
-
           <button class="btn" type="submit">Anfrage senden</button>
         </form>
       </div>
@@ -305,6 +310,15 @@
         <h3>Kontakt</h3>
         <p id="addr"><strong>Seeglanzevent – Hochzeitslocation</strong><br> Boschstraße, 86695 Nordendorf</p>
         <p>Tel. <a id="tel" href="tel:+490000000000">+49 000 000000</a><br>E-Mail <a id="mail" href="mailto:hallo@seeglanzevent.de">hallo@seeglanzevent.de</a></p>
+
+        <!-- NEU: WhatsApp in der Kontaktbox -->
+        <div style="margin:8px 0 12px">
+          <a class="btn btn-wa" target="_blank" rel="noopener"
+             href="https://wa.me/4915565629161?text=Hallo%20Seeglanzevent!%20Wir%20haben%20eine%20Anfrage%20zur%20Verf%C3%BCgbarkeit.">
+            WhatsApp-Anfrage
+          </a>
+        </div>
+
         <div style="border-radius:12px;overflow:hidden;border:1px solid var(--beige-3);height:220px">
           <iframe title="Seeglanzevent Karte" width="100%" height="220" frameborder="0" style="border:0;filter:saturate(110%) contrast(1.05)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=Boschstraße,+86695+Nordendorf&output=embed"></iframe>
