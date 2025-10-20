@@ -82,31 +82,30 @@
     .small{font-size:12px;opacity:.8}
 
     /* Consent-Box – Checkbox links, Text daneben über fast gesamte Breite */
-.consent-box{
-  grid-column: 1 / -1;
-  background:#fff;
-  border:1px solid var(--beige-3);
-  border-radius:12px;
-  padding:14px 16px;
-  display:grid;
-  grid-template-columns: auto 1fr;   /* ⬅️ Checkbox | Text */
-  gap:12px;
-  align-items:start;
-  margin:6px 0 12px;
-  box-shadow: var(--shadow);
-}
-.consent-box input[type="checkbox"]{
-  margin:3px 0 0 0;                  /* hübsch oben ausgerichtet */
-  accent-color:var(--green);
-}
-.consent-box label{
-  margin:0;
-  font-size:14px;
-  line-height:1.55;
-  display:block;                     /* Text nutzt volle rechte Spalte */
-  word-break:break-word;
-}
-
+    .consent-box{
+      grid-column: 1 / -1;
+      background:#fff;
+      border:1px solid var(--beige-3);
+      border-radius:12px;
+      padding:14px 16px;
+      display:grid;
+      grid-template-columns: auto 1fr;   /* Checkbox | Text */
+      gap:12px;
+      align-items:start;
+      margin:6px 0 12px;
+      box-shadow: var(--shadow);
+    }
+    .consent-box input[type="checkbox"]{
+      margin:3px 0 0 0;
+      accent-color:var(--green);
+    }
+    .consent-box label{
+      margin:0;
+      font-size:14px;
+      line-height:1.55;
+      display:block;
+      word-break:break-word;
+    }
 
     /* Divider */
     .divider{height:14px;background:repeating-linear-gradient(135deg, #e9e1d7 0 12px, #efe7dd 12px 24px);border-top:1px solid #e1d8cc;border-bottom:1px solid #e1d8cc}
@@ -121,6 +120,35 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
     @media (max-width:480px){ .section{padding:44px 0} .hero{min-height:70vh} .lead{font-size:16px} }
+
+    /* ---------- Consent Banner & Map-Placeholder ---------- */
+    .map-placeholder{
+      height:220px;border:1px solid var(--beige-3);border-radius:12px;overflow:hidden;
+      background:linear-gradient(135deg,#efe7dd,#f6f1ea);
+      position:relative;
+    }
+    .map-placeholder-inner{
+      position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:14px;
+    }
+    .map-note{font-size:14px;margin-bottom:10px;opacity:.9}
+
+    .cc-banner{
+      position:fixed;inset:auto 0 0 0; z-index:9999;
+      background:#fff; border-top:1px solid var(--beige-3);
+      box-shadow:0 -8px 30px rgba(0,0,0,.08);
+    }
+    .cc-wrap{max-width:1180px;margin:0 auto;padding:16px 20px;display:grid;gap:12px}
+    .cc-head{font-weight:700}
+    .cc-grid{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+    .cc-actions{display:flex;gap:10px;flex-wrap:wrap;justify-self:end}
+    .cc-pill{display:flex;align-items:center;gap:8px;background:#faf7f2;border:1px solid var(--beige-3);
+      border-radius:999px;padding:8px 12px;font-size:14px;margin-top:8px}
+    .cc-pill input{margin:0;accent-color:var(--green)}
+    .cc-link{font-size:12px;opacity:.8;margin-top:6px}
+    .cc-btn{border:1px solid var(--beige-3);background:#fff;border-radius:10px;padding:10px 14px;font-weight:600}
+    .cc-btn-primary{background:var(--green);color:#fff;border-color:var(--green)}
+    .cc-btn-primary:hover{background:var(--green-2)}
+    .cc-btn-ghost{background:#fff}
   </style>
 </head>
 <body>
@@ -311,10 +339,6 @@
             </label>
           </div>
 
-          <!-- Optional: zusätzliche Captcha-Abwehr
-          <div data-netlify-recaptcha="true"></div>
-          -->
-
           <button class="btn" type="submit">Anfrage senden</button>
         </form>
       </div>
@@ -328,10 +352,19 @@
           <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">WhatsApp-Anfrage</a>
         </p>
 
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--beige-3);height:220px">
-          <iframe title="Seeglanzevent Karte" width="100%" height="220" frameborder="0" style="border:0;filter:saturate(110%) contrast(1.05)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Boschstraße,+86695+Nordendorf&output=embed"></iframe>
+        <!-- Map-Platzhalter – lädt erst nach Zustimmung -->
+        <div id="map-embed"
+             class="map-placeholder"
+             data-src="https://www.google.com/maps?q=Boschstraße,+86695+Nordendorf&output=embed"
+             aria-label="Google Maps (lädt erst nach Zustimmung)">
+          <div class="map-placeholder-inner">
+            <div>
+              <div class="map-note">Diese Karte wird von Google geladen und kann Cookies setzen.</div>
+              <button type="button" class="btn" onclick="acceptOneAndLoad('maps')">Karte laden</button>
+            </div>
+          </div>
         </div>
+
         <div class="small" style="margin-top:6px"><a href="https://www.google.com/maps/search/?api=1&query=Boschstraße,+86695+Nordendorf" target="_blank" rel="noopener">In Google Maps öffnen</a></div>
       </aside>
     </div>
@@ -343,7 +376,8 @@
         <div class="script" style="font-size:28px">Bis bald bei Seeglanzevent</div>
         <p class="small">
           <a href="/impressum/">Impressum</a> ·
-          <a href="/datenschutz/">Datenschutz</a>
+          <a href="/datenschutz/">Datenschutz</a> ·
+          <a href="#" onclick="openConsent()">Cookie-Einstellungen</a>
         </p>
       </div>
       <div>
@@ -351,6 +385,36 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie/Consent Banner -->
+  <div id="cc-banner" class="cc-banner" hidden>
+    <div class="cc-wrap">
+      <div class="cc-grid">
+        <div>
+          <div class="cc-head">Cookies & externe Inhalte</div>
+          <div class="cc-text small">
+            Wir verwenden nur zwingend notwendige Cookies. Für externe Inhalte (z.&nbsp;B. Google Maps)
+            benötigen wir deine Zustimmung. Details in der <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutz­erklärung</a>.
+          </div>
+
+          <label class="cc-pill" title="Immer aktiv und ohne Zustimmung">
+            <input type="checkbox" checked disabled> Funktional (erforderlich)
+          </label>
+          <label class="cc-pill">
+            <input id="cc-maps" type="checkbox"> Google&nbsp;Maps (externe Inhalte)
+          </label>
+
+          <div class="cc-link">Du kannst deine Auswahl jederzeit im Footer unter „Cookie-Einstellungen“ ändern.</div>
+        </div>
+
+        <div class="cc-actions">
+          <button type="button" class="cc-btn cc-btn-ghost" onclick="ccReject()">Nur notwendige</button>
+          <button type="button" class="cc-btn" onclick="ccSave()">Auswahl speichern</button>
+          <button type="button" class="cc-btn cc-btn-primary" onclick="ccAcceptAll()">Alle akzeptieren</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Jahr im Footer
@@ -415,6 +479,78 @@
     set('utm_campaign', p.get('utm_campaign'));
     set('referrer', document.referrer);
   })();
+  </script>
+
+  <!-- Consent-Logik + Map lazy laden -->
+  <script>
+    const CONSENT_KEY = 'sgz_consent_v1';
+
+    function getConsent(){
+      try { return JSON.parse(localStorage.getItem(CONSENT_KEY) || '{}'); }
+      catch(e){ return {}; }
+    }
+    function setConsent(c){ localStorage.setItem(CONSENT_KEY, JSON.stringify(c)); }
+    function showBanner(){ document.getElementById('cc-banner')?.removeAttribute('hidden'); }
+    function hideBanner(){ document.getElementById('cc-banner')?.setAttribute('hidden',''); }
+
+    function applyConsent(){
+      const c = getConsent();
+      if (c.maps) loadMap();
+      // Platz für weitere Kategorien (Analytics etc.)
+    }
+
+    function ccAcceptAll(){
+      const c = { necessary:true, maps:true };
+      setConsent(c); hideBanner(); applyConsent();
+    }
+    function ccReject(){
+      const c = { necessary:true, maps:false };
+      setConsent(c); hideBanner(); applyConsent();
+    }
+    function ccSave(){
+      const c = { necessary:true, maps: !!document.getElementById('cc-maps')?.checked };
+      setConsent(c); hideBanner(); applyConsent();
+    }
+    function openConsent(){
+      showBanner();
+      const c=getConsent();
+      const chk=document.getElementById('cc-maps');
+      if(chk) chk.checked=!!c.maps;
+    }
+    // Einmalige Zustimmung nur für Maps über den Button "Karte laden"
+    function acceptOneAndLoad(category){
+      const c = getConsent();
+      if (category === 'maps'){ c.maps = true; setConsent(c); applyConsent(); hideBanner(); }
+    }
+
+    // Map dynamisch laden
+    function loadMap(){
+      const wrap = document.getElementById('map-embed');
+      if (!wrap || wrap.dataset.loaded) return;
+      const src = wrap.dataset.src;
+      const iframe = document.createElement('iframe');
+      iframe.title = 'Seeglanzevent Karte';
+      iframe.width = '100%';
+      iframe.height = '220';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.style.border = '0';
+      iframe.style.filter = 'saturate(110%) contrast(1.05)';
+      iframe.src = src;
+      wrap.innerHTML = '';
+      wrap.appendChild(iframe);
+      wrap.dataset.loaded = '1';
+    }
+
+    // Init
+    (function(){
+      const existing = getConsent();
+      if (typeof existing.necessary === 'undefined'){
+        showBanner();
+      } else {
+        applyConsent();
+      }
+    })();
   </script>
 </body>
 </html>
