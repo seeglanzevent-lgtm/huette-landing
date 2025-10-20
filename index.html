@@ -76,6 +76,21 @@
     @media (max-width:560px){.cols{grid-template-columns:1fr}}
     .small{font-size:12px;opacity:.8}
 
+    /* Einwilligung zentriert unter dem Formular */
+    .consent{
+      grid-column:1 / -1;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:10px;
+      text-align:left;
+      margin:8px 0 12px;
+      font-size:14px;
+      line-height:1.45;
+    }
+    .consent input[type="checkbox"]{ margin-top:3px; accent-color:var(--green); }
+    .consent a{ text-decoration: underline; }
+
     /* Divider */
     .divider{height:14px;background:repeating-linear-gradient(135deg, #e9e1d7 0 12px, #efe7dd 12px 24px);border-top:1px solid #e1d8cc;border-bottom:1px solid #e1d8cc}
 
@@ -269,13 +284,12 @@
             <textarea id="message" name="message" rows="4" placeholder="Was ist euch wichtig? Deko in Beige/Boho, Trauung vor Ort, Technik …"></textarea>
           </div>
 
-          <!-- Pflicht-Checkbox Datenschutz -->
-          <div class="small" style="margin:8px 0 4px">
-            <label style="display:flex;gap:10px;align-items:flex-start">
-              <input type="checkbox" name="privacy" required>
-              <span>
-                Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen und willige in die Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage ein.
-              </span>
+          <!-- Einwilligung zentriert -->
+          <div class="consent">
+            <input id="agree" name="agree" type="checkbox" required>
+            <label for="agree">
+              Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen
+              und willige in die Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage ein.
             </label>
           </div>
 
