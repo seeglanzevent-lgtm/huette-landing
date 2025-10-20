@@ -81,22 +81,32 @@
     @media (max-width:560px){.cols{grid-template-columns:1fr}}
     .small{font-size:12px;opacity:.8}
 
-    /* Consent-Box */
-    .consent-box{
-      grid-column:1 / -1;
-      background:#fff;
-      border:1px solid var(--beige-3);
-      border-radius:12px;
-      padding:14px 16px;
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      margin:6px 0 12px;
-      box-shadow: var(--shadow);
-    }
-    .consent-box input[type="checkbox"]{margin-top:3px; accent-color:var(--green);}
-    .consent-box label{font-size:14px; line-height:1.5}
-    .consent-box a{ text-decoration: underline; }
+    /* Consent-Box – Checkbox links, Text daneben über fast gesamte Breite */
+.consent-box{
+  grid-column: 1 / -1;
+  background:#fff;
+  border:1px solid var(--beige-3);
+  border-radius:12px;
+  padding:14px 16px;
+  display:grid;
+  grid-template-columns: auto 1fr;   /* ⬅️ Checkbox | Text */
+  gap:12px;
+  align-items:start;
+  margin:6px 0 12px;
+  box-shadow: var(--shadow);
+}
+.consent-box input[type="checkbox"]{
+  margin:3px 0 0 0;                  /* hübsch oben ausgerichtet */
+  accent-color:var(--green);
+}
+.consent-box label{
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+  display:block;                     /* Text nutzt volle rechte Spalte */
+  word-break:break-word;
+}
+
 
     /* Divider */
     .divider{height:14px;background:repeating-linear-gradient(135deg, #e9e1d7 0 12px, #efe7dd 12px 24px);border-top:1px solid #e1d8cc;border-bottom:1px solid #e1d8cc}
