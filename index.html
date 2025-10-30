@@ -3,316 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- SEO-Titel + Description mit Augsburg drin -->
-  <title>Hochzeitslocation bei Augsburg · Seeglanzevent | Hütten-Style · 140 Gäste innen · 300 außen</title>
-  <meta name="description" content="Seeglanzevent – Hochzeitslocation bei Augsburg im warmen Hütten-Style. Platz für 140 Gäste innen · 300 außen. Freie Trauung, Firmenfeier & Jubiläum in Nordendorf bei Augsburg. Jetzt Verfügbarkeit prüfen.">
-
+  <title>Hochzeitslocation bei Augsburg | Seeglanzevent – Eventlocation im Hütten-Style</title>
+  <meta name="description" content="Rustikale Hochzeits- & Eventlocation bei Augsburg: Seeglanzevent in Nordendorf, Hütten-Style, bis 140 Gäste innen & 300 außen, freie Trauung & Firmenfeiern.">
+  <link rel="canonical" href="https://seeglanzevent.de/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- LocalBusiness / EventVenue Schema für Google -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EventVenue",
-    "name": "Seeglanzevent – Hochzeitslocation",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Boschstraße",
-      "postalCode": "86695",
-      "addressLocality": "Nordendorf",
-      "addressRegion": "Bayern",
-      "addressCountry": "DE"
-    },
-    "telephone": "+49 1556 5629161",
-    "email": "hallo@seeglanzevent.de",
-    "url": "https://www.seeglanzevent.de",
-    "description": "Rustikale Hochzeitslocation im Hütten-Style bei Augsburg. Platz für 140 Gäste innen und 300 Gäste außen. Ideal für Hochzeit, freie Trauung, Firmenfeier, Jubiläum.",
-    "sameAs": [
-      "https://wa.me/4915565629161"
-    ]
-  }
-  </script>
-
   <style>
     :root{
-      --beige:#f3eee7;
-      --beige-2:#efe7dd;
-      --beige-3:#e7dfd5;
-      --green:#3b5d3f;
-      --green-2:#2e4a32;
-      --text:#2b2b2b;
-      --gold:#b08d57;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --beige:#f3eee7; --beige-2:#efe7dd; --beige-3:#e7dfd5;
+      --green:#3b5d3f; --green-2:#2e4a32;
+      --text:#2b2b2b; --gold:#b08d57; --shadow:0 10px 30px rgba(0,0,0,.08);
     }
-
     *{box-sizing:border-box}
-
-    html,body{
-      margin:0;
-      background:var(--beige);
-      color:var(--text);
-    }
-
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      line-height:1.55;
-    }
-
-    h1,h2,h3{
-      font-family:"Playfair Display",Georgia,serif;
-      line-height:1.15;
-      margin:0 0 .5rem;
-    }
-
-    .script{
-      font-family:"Great Vibes", cursive;
-      color:var(--gold);
-      font-weight:400;
-    }
-
+    html,body{margin:0;background:var(--beige);color:var(--text)}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; line-height:1.55}
+    h1,h2,h3{font-family:"Playfair Display",Georgia,serif; line-height:1.15; margin:0 0 .5rem}
+    .script{font-family:"Great Vibes", cursive; color:var(--gold); font-weight:400}
     a{color:inherit}
-
-    .wrap{
-      max-width:1180px;
-      margin:0 auto;
-      padding:0 20px;
-    }
-
-    .btn{
-      display:inline-block;
-      background:var(--green);
-      color:#fff;
-      padding:14px 20px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow:var(--shadow);
-      border:1px solid var(--green);
-      font-size:16px;
-      line-height:1.3;
-    }
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;background:var(--green);color:#fff;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
     .btn:hover{background:var(--green-2)}
-
-    .ghost{
-      background:transparent;
-      border:1px solid var(--green);
-      color:var(--green);
-    }
-
-    /* WhatsApp Button in Primärgrün */
-    .btn-wa{
-      background:var(--green);
-      color:#fff;
-    }
-    .btn-wa:hover{
-      background:var(--green-2);
-    }
-
+    .ghost{background:transparent;border:1px solid var(--green);color:var(--green)}
+    .btn-wa{background:var(--green); color:#fff}
+    .btn-wa:hover{background:var(--green-2)}
     section[id], header[id] { scroll-margin-top: 80px; }
 
     /* Topbar */
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:saturate(120%) blur(6px);
-      background:rgba(243,238,231,.85);
-      border-bottom:1px solid var(--beige-3);
-    }
-    .topbar .inner{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      justify-content:space-between;
-      padding:10px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .logo{
-      width:40px;
-      height:40px;
-      border-radius:10px;
-      background:linear-gradient(135deg, #d9c9b6, #f4efe7);
-      display:grid;
-      place-items:center;
-      box-shadow:var(--shadow);
-      border:1px solid var(--beige-3);
-      font-size:20px;
-      line-height:1;
-    }
-    .brand-title{
-      font-family:"Playfair Display";
-      font-weight:700;
-    }
-    .nav-cta{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);background:rgba(243,238,231,.85);border-bottom:1px solid var(--beige-3)}
+    .topbar .inner{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg, #d9c9b6, #f4efe7);display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--beige-3)}
+    .brand-title{font-family:"Playfair Display";font-weight:700}
+    .nav-cta{display:flex;align-items:center;gap:10px}
 
-    /* Hero (ohne Overlay, nur Textschatten) */
-    .hero{
-      position:relative;
-      min-height:78vh;
-      display:grid;
-      align-items:center;
-    }
-    .hero .bg{
-      position:absolute;
-      inset:0;
-      background:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop')
-        center/cover no-repeat;
-      filter:none;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:none;
-      pointer-events:none;
-    }
-    .hero .content{
-      position:relative;
-      padding:80px 0;
-    }
-    .hero .content::before{display:none!important}
-    .hero h1,
-    .hero .script,
-    .hero .lead{
-      color:#fff;
-      text-shadow:
-        0 2px 14px rgba(0,0,0,.55),
-        0 0 2px rgba(0,0,0,.35);
-    }
-    .tag{
-      display:inline-block;
-      background:#fff7ef;
-      border:1px solid var(--beige-3);
-      padding:6px 12px;
-      border-radius:999px;
-      font-size:14px;
-      box-shadow:var(--shadow);
-    }
-    .lead{
-      font-size:18px;
-      max-width:740px;
-      margin:10px 0 22px;
-    }
+    /* Hero */
+    .hero{position:relative;min-height:78vh;display:grid;align-items:center}
+    .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;filter:none}
+    .hero::after{content:"";position:absolute;inset:0;background:none;pointer-events:none}
+    .hero .content{position:relative;padding:80px 0}
+    .hero h1,.hero .script,.hero .lead{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55), 0 0 2px rgba(0,0,0,.35)}
+    .tag{display:inline-block;background:#fff7ef;border:1px solid var(--beige-3);padding:6px 12px;border-radius:999px;font-size:14px;box-shadow:var(--shadow)}
+    .lead{font-size:18px;max-width:740px;margin:10px 0 22px}
 
     /* Sections & cards */
     .section{padding:64px 0}
+    .grid{display:grid;gap:26px}
+    .two{grid-template-columns:1.2fr .8fr}
+    .two-rev{grid-template-columns:.9fr 1.1fr}
+    @media (max-width:980px){.two,.two-rev{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid var(--beige-3);border-radius:16px;box-shadow:var(--shadow)}
 
-    .grid{
-      display:grid;
-      gap:26px;
-    }
-    .two{
-      grid-template-columns:1.2fr .8fr;
-    }
-    .two-rev{
-      grid-template-columns:.9fr 1.1fr;
-    }
-    @media (max-width:980px){
-      .two,.two-rev{grid-template-columns:1fr}
-    }
-
-    .card{
-      background:#fff;
-      border:1px solid var(--beige-3);
-      border-radius:16px;
-      box-shadow:var(--shadow);
-    }
-
-    /* Media block */
-    .media{
-      position:relative;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid var(--beige-3);
-      aspect-ratio:3/2;
-    }
-    .media img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    @media (max-width:560px){
-      .media{aspect-ratio:4/3}
-    }
-
-    /* Icons (Häkchen-Liste) */
-    .icon{
-      width:22px;
-      height:22px;
-      display:inline-block;
-      margin-right:8px;
-    }
+    /* Media */
+    .media{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--beige-3);aspect-ratio:3/2}
+    .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    @media (max-width:560px){ .media{aspect-ratio:4/3} }
 
     /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns:2fr 1fr 1fr;
-      gap:14px;
-    }
-    .gallery img{
-      width:100%;
-      object-fit:cover;
-      border-radius:14px;
-      border:1px solid var(--beige-3);
-      aspect-ratio:4/3;
-      height:auto;
-    }
+    .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}
+    .gallery img{width:100%;object-fit:cover;border-radius:14px;border:1px solid var(--beige-3);aspect-ratio:4/3;height:auto}
     .gallery img.tall{aspect-ratio:3/4}
     .gallery img.wide{aspect-ratio:16/9}
     .gallery .tall{grid-row:span 2}
     .gallery .wide{grid-column:span 2}
-    @media (max-width:980px){
-      .gallery{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width:560px){
-      .gallery{grid-template-columns:1fr}
-    }
+    @media (max-width:980px){.gallery{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.gallery{grid-template-columns:1fr}}
 
     /* Form */
-    form{
-      display:grid;
-      gap:12px;
-    }
-    label{
-      font-size:14px;
-      opacity:.9;
-    }
-    input,select,textarea{
-      width:100%;
-      padding:12px 14px;
-      border:1px solid var(--beige-3);
-      border-radius:12px;
-      background:#fff;
-      font-size:16px;
-    }
-    .cols{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width:560px){
-      .cols{grid-template-columns:1fr}
-    }
-    .small{
-      font-size:12px;
-      opacity:.8;
-    }
+    form{display:grid;gap:12px}
+    label{font-size:14px;opacity:.9}
+    input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--beige-3);border-radius:12px;background:#fff;font-size:16px}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:560px){.cols{grid-template-columns:1fr}}
+    .small{font-size:12px;opacity:.8}
 
-    /* Consent-Box – Checkbox links, Text daneben über fast gesamte Breite */
+    /* Consent-Box */
     .consent-box{
       grid-column: 1 / -1;
       background:#fff;
@@ -320,196 +85,65 @@
       border-radius:12px;
       padding:14px 16px;
       display:grid;
-      grid-template-columns: auto 1fr;   /* Checkbox | Text */
+      grid-template-columns: auto 1fr;
       gap:12px;
       align-items:start;
       margin:6px 0 12px;
       box-shadow: var(--shadow);
     }
-    .consent-box input[type="checkbox"]{
-      margin:3px 0 0 0;
-      accent-color:var(--green);
-    }
-    .consent-box label{
-      margin:0;
-      font-size:14px;
-      line-height:1.55;
-      display:block;
-      word-break:break-word;
-    }
+    .consent-box input[type="checkbox"]{margin:3px 0 0 0;accent-color:var(--green)}
+    .consent-box label{margin:0;font-size:14px;line-height:1.55;display:block;word-break:break-word}
 
     /* Divider */
-    .divider{
-      height:14px;
-      background:repeating-linear-gradient(
-        135deg,
-        #e9e1d7 0 12px,
-        #efe7dd 12px 24px
-      );
-      border-top:1px solid #e1d8cc;
-      border-bottom:1px solid #e1d8cc;
-    }
+    .divider{height:14px;background:repeating-linear-gradient(135deg, #e9e1d7 0 12px, #efe7dd 12px 24px);border-top:1px solid #e1d8cc;border-bottom:1px solid #e1d8cc}
 
     /* Footer */
-    footer{
-      background:var(--beige-2);
-      border-top:1px solid var(--beige-3);
-    }
-    .footgrid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-    }
-    @media (max-width:720px){
-      .footgrid{grid-template-columns:1fr}
-    }
+    footer{background:var(--beige-2);border-top:1px solid var(--beige-3)}
+    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    @media (max-width:720px){.footgrid{grid-template-columns:1fr}}
 
-    /* Anim */
-    .fade-up{
-      animation:fadeUp .7s ease both;
-    }
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(12px)}
-      to{opacity:1;transform:none}
-    }
+    /* Testimonials responsive */
+    .testimonials{grid-template-columns:1fr 1fr 1fr}
+    @media (max-width:980px){.testimonials{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.testimonials{grid-template-columns:1fr}}
 
-    @media (max-width:480px){
-      .section{padding:44px 0}
-      .hero{min-height:70vh}
-      .lead{font-size:16px}
-    }
-
-    /* ---------- Consent Banner & Map-Placeholder ---------- */
+    /* Map placeholder */
     .map-placeholder{
-      height:220px;
-      border:1px solid var(--beige-3);
-      border-radius:12px;
-      overflow:hidden;
+      height:220px;border:1px solid var(--beige-3);border-radius:12px;overflow:hidden;
       background:linear-gradient(135deg,#efe7dd,#f6f1ea);
       position:relative;
     }
     .map-placeholder-inner{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding:14px;
+      position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:14px;
     }
-    .map-note{
-      font-size:14px;
-      margin-bottom:10px;
-      opacity:.9;
-    }
+    .map-note{font-size:14px;margin-bottom:10px;opacity:.9}
 
+    /* Cookie banner */
     .cc-banner{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      z-index:9999;
-      background:#fff;
-      border-top:1px solid var(--beige-3);
+      position:fixed;inset:auto 0 0 0; z-index:9999;
+      background:#fff; border-top:1px solid var(--beige-3);
       box-shadow:0 -8px 30px rgba(0,0,0,.08);
-      font-size:14px;
-      line-height:1.4;
     }
-    .cc-wrap{
-      max-width:1180px;
-      margin:0 auto;
-      padding:16px 20px;
-      display:grid;
-      gap:16px;
-    }
-    /* Layout im Banner */
-    .cc-grid{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:16px;
-      align-items:start;
-    }
-    @media (max-width:560px){
-      .cc-grid{
-        grid-template-columns:1fr;
-      }
-      .cc-actions{
-        justify-self:start !important;
-        width:100%;
-        flex-direction:column;
-      }
-      .cc-actions .cc-btn{
-        width:100%;
-        text-align:center;
-      }
+    .cc-wrap{max-width:1180px;margin:0 auto;padding:16px 20px;display:grid;gap:12px}
+    .cc-grid{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+    .cc-actions{display:flex;gap:10px;flex-wrap:wrap;justify-self:end}
+    .cc-pill{display:flex;align-items:center;gap:8px;background:#faf7f2;border:1px solid var(--beige-3);
+      border-radius:999px;padding:8px 12px;font-size:14px;margin-top:8px}
+    .cc-pill input{margin:0;accent-color:var(--green)}
+    .cc-btn{border:1px solid var(--beige-3);background:#fff;border-radius:10px;padding:10px 14px;font-weight:600}
+    .cc-btn-primary{background:var(--green);color:#fff;border-color:var(--green)}
+    .cc-btn-primary:hover{background:var(--green-2)}
+    .cc-btn-ghost{background:#fff}
+    @media (max-width:600px){
+      .cc-grid{grid-template-columns:1fr}
+      .cc-actions{justify-content:flex-start}
     }
 
-    .cc-head{
-      font-weight:700;
-      margin-bottom:4px;
-    }
-    .cc-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-self:end;
-    }
-    .cc-pill{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      background:#faf7f2;
-      border:1px solid var(--beige-3);
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:14px;
-      margin-top:8px;
-      line-height:1.3;
-      flex-wrap:wrap;
-    }
-    .cc-pill input{
-      margin:0;
-      accent-color:var(--green);
-    }
-    .cc-link{
-      font-size:12px;
-      opacity:.8;
-      margin-top:6px;
-      line-height:1.4;
-    }
-    .cc-btn{
-      border:1px solid var(--beige-3);
-      background:#fff;
-      border-radius:10px;
-      padding:10px 14px;
-      font-weight:600;
-      font-size:14px;
-      line-height:1.3;
-      cursor:pointer;
-    }
-    .cc-btn-primary{
-      background:var(--green);
-      color:#fff;
-      border-color:var(--green);
-    }
-    .cc-btn-primary:hover{
-      background:var(--green-2);
-    }
-    .cc-btn-ghost{
-      background:#fff;
-    }
+    /* Anim */
+    .fade-up{animation:fadeUp .7s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-    /* Testimonials responsive Spalten */
-    .testimonials{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:26px;
-    }
-    @media (max-width:980px){
-      .testimonials{grid-template-columns:1fr 1fr;}
-    }
-    @media (max-width:560px){
-      .testimonials{grid-template-columns:1fr;}
-    }
+    @media (max-width:480px){ .section{padding:44px 0} .hero{min-height:70vh} .lead{font-size:16px} }
   </style>
 </head>
 <body>
@@ -520,9 +154,7 @@
         <div class="logo" aria-hidden="true">✨</div>
         <div>
           <div class="script" style="font-size:24px;line-height:1">Seeglanzevent</div>
-          <div class="brand-title" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase">
-            Hochzeit &amp; Feiern
-          </div>
+          <div class="brand-title" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase">Hochzeit & Feiern</div>
         </div>
       </div>
       <div class="nav-cta">
@@ -534,72 +166,37 @@
 
   <!-- Hero -->
   <header class="hero" id="hero">
-    <div class="bg" role="img" aria-label="Rustikale Hütte, festlich dekoriert"></div>
+    <div class="bg" role="img" aria-label="Rustikale Hochzeitslocation in Nordendorf bei Augsburg im Hütten-Style"></div>
     <div class="wrap content fade-up">
-      <span class="tag">Seeglanzevent · Hochzeitslocation im Hütten-Style</span>
-
-      <h1 id="hero-headline" style="font-size:clamp(32px,6vw,56px);margin:.4rem 0 .2rem">
-        Hochzeits- &amp; Eventlocation im Hütten-Style
-      </h1>
-
-      <p class="script" id="hero-subline" style="font-size:32px;margin:4px 0 10px">
-        warm · rustikal · festlich
-      </p>
-
-      <p class="lead" id="hero-lead">
-        Beige-Töne, Holz &amp; Kerzenlicht: romantisch &amp; gemütlich.
-        <strong>140 Gäste innen</strong> · <strong>300 außen</strong>.
-        In Nordendorf bei Augsburg – ideal für Hochzeit, freie Trauung,
-        Jubiläum &amp; Firmenfeier.
-      </p>
-
+      <span class="tag">Seeglanzevent · Hochzeits- & Eventlocation bei Augsburg</span>
+      <h1 id="hero-headline" style="font-size:clamp(32px,6vw,56px);margin:.4rem 0 .2rem">Hochzeits- & Eventlocation im Hütten-Style</h1>
+      <p class="script" id="hero-subline" style="font-size:32px;margin:4px 0 10px">warm · rustikal · festlich</p>
+      <p class="lead" id="hero-lead">Beige-Töne, Holz & Kerzenlicht: romantisch & gemütlich. <strong>140 Gäste innen</strong> · <strong>300 außen</strong>. In Nordendorf bei Augsburg – ideal für Hochzeit, freie Trauung, Firmenfeier & Jubiläum.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" href="#anfrage">Jetzt anfragen</a>
         <a class="btn ghost" href="#pakete">Pakete ansehen</a>
-        <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">
-          WhatsApp-Anfrage
-        </a>
+        <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">WhatsApp-Anfrage</a>
       </div>
     </div>
   </header>
 
   <div class="divider" aria-hidden="true"></div>
 
-  <!-- USPs + Bild -->
+  <!-- USPs -->
   <section class="section" id="usps">
     <div class="wrap grid two">
       <div class="fade-up">
-        <h2>Seeglanzevent – eure Hütten-Location bei Augsburg (Nordendorf)</h2>
-
+        <h2>Hochzeitslocation & Eventlocation bei Augsburg</h2>
         <ul style="list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px">
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg>
-            Stilvoller Hütten-Look in warmen Beige- und Naturtönen
-          </li>
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg>
-            <strong>Platz für 140 Personen innen · 300 außen</strong> – flexibel für Trauung, Dinner &amp; Party
-          </li>
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg>
-            Empfehlungen für Foto, Deko, Musik &amp; Trauredner
-          </li>
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7" stroke-width="2"/></svg>
-            Catering möglich oder Full-Service
-          </li>
+          <li>✓ Stilvoller Hütten-Look in warmen Beige- und Naturtönen</li>
+          <li>✓ <strong>140 innen · 300 außen</strong> – perfekt für freie Trauung, Dinner & Party</li>
+          <li>✓ Empfehlungen für Foto, Deko, Musik & Trauredner</li>
+          <li>✓ Eigene Dienstleister möglich oder Full-Service möglich</li>
         </ul>
-
-        <div style="margin-top:16px" class="small">
-          Hinweis: Kapazitäten &amp; Aufbauten nach Absprache – wir planen gemeinsam euer perfektes Setting.
-        </div>
+        <div style="margin-top:16px" class="small">Hinweis: Kapazitäten & Aufbauten nach Absprache – wir planen gemeinsam euer perfektes Setting.</div>
       </div>
-
       <figure class="card media fade-up">
-        <img
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
-          alt="Festlich gedeckte lange Holztische in Hütten-Optik, warme Kerzenbeleuchtung"
-          loading="lazy">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="Rustikal dekorierte Eventlocation Seeglanzevent im Hütten-Style nahe Augsburg">
       </figure>
     </div>
   </section>
@@ -607,33 +204,15 @@
   <!-- Galerie -->
   <section id="galerie" class="section" style="background:var(--beige-2)">
     <div class="wrap">
-      <h2>Stimmung &amp; Eindrücke</h2>
-
+      <h2>Stimmung & Eindrücke aus der Location</h2>
+      <p class="small" style="margin:6px 0 16px">Eigene Bilder können jederzeit im GitHub-Ordner <code>/images</code> ersetzt werden.</p>
       <div id="gallery" class="gallery">
-        <img class="tall"
-          src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop"
-          alt="Hochzeitstafel mit Kerzen, Beige-Deko und Eukalyptus"
-          loading="lazy">
-        <img
-          src="https://images.unsplash.com/photo-1487537023671-8dce1a785863?q=80&w=1200&auto=format&fit=crop"
-          alt="Brautpaar tanzt im warmen Abendlicht"
-          loading="lazy">
-        <img
-          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop"
-          alt="Holz-Deko, Blumen und natürliche Details"
-          loading="lazy">
-        <img class="wide"
-          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop"
-          alt="Außenbereich mit Lichterkette für Sommerfeier"
-          loading="lazy">
-        <img
-          src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1200&auto=format&fit=crop"
-          alt="Dessert- und Candybar in Naturtönen"
-          loading="lazy">
-        <img
-          src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop"
-          alt="Freie Trauung im Boho-Look mit Ballons"
-          loading="lazy">
+        <img class="tall" src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop" alt="Festlich gedeckte Hochzeitstafel mit Kerzen in der Seeglanzevent Location">
+        <img src="https://images.unsplash.com/photo-1487537023671-8dce1a785863?q=80&w=1200&auto=format&fit=crop" alt="Brautpaar mit Gästen beim Feiern in Augsburg Umgebung">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200&auto=format&fit=crop" alt="Rustikale Holzdetails der Eventlocation Seeglanzevent">
+        <img class="wide" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop" alt="Außenbereich der Hochzeitslocation mit Lichterkette">
+        <img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1200&auto=format&fit=crop" alt="Dessertbar für Hochzeiten in Nordendorf">
+        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop" alt="Freie Trauung bei Augsburg in natürlichem Stil">
       </div>
     </div>
   </section>
@@ -641,28 +220,26 @@
   <!-- Pakete -->
   <section id="pakete" class="section">
     <div class="wrap">
-      <h2>Pakete &amp; Möglichkeiten</h2>
-
+      <h2>Pakete & Möglichkeiten für eure Feier</h2>
       <div class="grid two-rev" style="align-items:start">
         <div class="card" style="padding:20px">
-          <h3>Hochzeit</h3>
-          <p>Trauung &amp; Feier an einem Ort – vom Sektempfang bis zur Party. Auf Wunsch inklusive Dekokonzept.</p>
+          <h3>Hochzeit & freie Trauung</h3>
+          <p>Trauung & Feier an einem Ort – vom Sektempfang bis zur Party. Auf Wunsch inklusive Dekokonzept im Hütten-Style.</p>
           <ul>
-            <li>Empfang mit Aperitif &amp; Fingerfood</li>
-            <li>Festliche Tafel</li>
-            <li>Tanzfläche, Musik &amp; Licht</li>
+            <li>Empfang mit Aperitif & Fingerfood</li>
+            <li>Festliche Tafel oder runde Tische</li>
+            <li>Tanzfläche, Musik & Licht</li>
           </ul>
           <a class="btn" href="#anfrage">Termin anfragen</a>
         </div>
-
         <div class="grid" style="gap:16px">
           <div class="card" style="padding:20px">
-            <h3>Geburtstag &amp; Jubiläum</h3>
+            <h3>Geburtstag & Jubiläum</h3>
             <p>Gemütliche Feier im Hütten-Ambiente – individuell nach euren Wünschen.</p>
           </div>
           <div class="card" style="padding:20px">
-            <h3>Firmenfeier</h3>
-            <p>Weihnachtsfeier, Teamevent oder Sommerfest – mit Hütten-Flair und professioneller Betreuung.</p>
+            <h3>Firmenfeier & Weihnachtsfeier</h3>
+            <p>Für Teams, Kundenevents oder Kick-Offs – mit Location, Deko & Ansprechpartner vor Ort.</p>
           </div>
         </div>
       </div>
@@ -673,20 +250,10 @@
   <section class="section" style="background:#fff">
     <div class="wrap">
       <h2>Das sagen unsere Gäste</h2>
-
-      <div class="testimonials">
-        <div class="card" style="padding:18px">
-          <p>„Genau unser Stil – warm, elegant und super organisiert.“</p>
-          <div class="small">— L.&nbsp;und&nbsp;T., Hochzeit</div>
-        </div>
-        <div class="card" style="padding:18px">
-          <p>„Die Beige-Deko in Kombination mit Holz: einfach traumhaft.“</p>
-          <div class="small">— M.&nbsp;K., Geburtstagsfeier</div>
-        </div>
-        <div class="card" style="padding:18px">
-          <p>„Top Betreuung, von Technik bis Ablauf. Absolut empfehlenswert!“</p>
-          <div class="small">— A.&nbsp;S., Firmenfeier</div>
-        </div>
+      <div class="grid testimonials">
+        <div class="card" style="padding:18px"><p>„Genau unser Stil – warm, elegant und super organisiert.“</p><div class="small">— L.&nbsp;und&nbsp;T., Hochzeit</div></div>
+        <div class="card" style="padding:18px"><p>„Die Beige-Deko in Kombination mit Holz: einfach traumhaft.“</p><div class="small">— M.&nbsp;K., Geburtstagsfeier</div></div>
+        <div class="card" style="padding:18px"><p>„Top Betreuung, von Technik bis Ablauf. Absolut empfehlenswert!“</p><div class="small">— A.&nbsp;S., Firmenfeier</div></div>
       </div>
     </div>
   </section>
@@ -695,12 +262,8 @@
   <section id="anfrage" class="section">
     <div class="wrap grid two">
       <div>
-        <h2>Verfügbarkeit prüfen &amp; Angebot erhalten</h2>
-        <p class="small">
-          Füllt das Formular aus – wir melden uns in der Regel innerhalb von 24 Stunden.
-          Oder schreibt uns direkt per WhatsApp unter
-          <a href="https://wa.me/4915565629161" target="_blank" rel="noopener"><strong>+49&nbsp;1556&nbsp;5629161</strong></a>.
-        </p>
+        <h2>Anfrage für Seeglanzevent stellen</h2>
+        <p class="small">Füllt das Formular aus – wir melden uns in der Regel innerhalb von 24 Stunden. Alternativ: <strong>Tel. +49&nbsp;1556&nbsp;5629161</strong>.</p>
 
         <form
           name="anfrage"
@@ -717,10 +280,7 @@
           <input type="hidden" name="utm_medium" value="">
           <input type="hidden" name="utm_campaign" value="">
           <input type="hidden" name="referrer" value="">
-
-          <p style="display:none" aria-hidden="true">
-            <label>Bitte leer lassen: <input name="bot-field"></label>
-          </p>
+          <p style="display:none" aria-hidden="true"><label>Bitte leer lassen: <input name="bot-field"></label></p>
 
           <div class="cols">
             <div>
@@ -732,11 +292,10 @@
               <input id="email" name="email" type="email" required>
             </div>
           </div>
-
           <div class="cols">
             <div>
               <label for="phone">Telefon*</label>
-              <input id="phone" name="phone" required placeholder="+49 1556 5629161">
+              <input id="phone" name="phone" required>
             </div>
             <div>
               <label for="event">Anlass*</label>
@@ -751,7 +310,6 @@
               </select>
             </div>
           </div>
-
           <div class="cols">
             <div>
               <label for="date">Wunschtermin</label>
@@ -762,14 +320,12 @@
               <input id="guests" name="guests" type="number" min="10" step="1" placeholder="z. B. 80">
             </div>
           </div>
-
           <div>
             <label for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="4"
-              placeholder="Was ist euch wichtig? Deko in Beige/Boho, Trauung vor Ort, Technik …"></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="Was ist euch wichtig? Deko in Beige/Boho, Trauung vor Ort, Technik …"></textarea>
           </div>
 
-          <!-- Einwilligung in eigener Box -->
+          <!-- Einwilligung -->
           <div class="consent-box" role="group" aria-labelledby="consentLabel">
             <input id="agree" name="agree" type="checkbox" required aria-describedby="consentLabel">
             <label id="consentLabel" for="agree">
@@ -784,44 +340,27 @@
 
       <aside class="card" style="padding:22px">
         <h3>Kontakt</h3>
-        <p id="addr">
-          <strong>Seeglanzevent – Hochzeitslocation</strong><br>
-          Boschstraße, 86695 Nordendorf
-        </p>
-        <p>
-          Tel. <a id="tel" href="tel:+4915565629161">+49 1556 5629161</a><br>
-          E-Mail <a id="mail" href="mailto:hallo@seeglanzevent.de">hallo@seeglanzevent.de</a>
-        </p>
+        <p id="addr"><strong>Seeglanzevent – Hochzeitslocation</strong><br> Boschstraße, 86695 Nordendorf</p>
+        <p>Tel. <a id="tel" href="tel:+4915565629161">+49&nbsp;1556&nbsp;5629161</a><br>E-Mail <a id="mail" href="mailto:hallo@seeglanzevent.de">hallo@seeglanzevent.de</a></p>
 
         <p style="margin:10px 0 14px">
-          <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">
-            WhatsApp-Anfrage
-          </a>
+          <a class="btn btn-wa" href="https://wa.me/4915565629161" target="_blank" rel="noopener">WhatsApp-Anfrage</a>
         </p>
 
-        <!-- Map-Platzhalter – lädt erst nach Zustimmung -->
+        <!-- Map-Platzhalter -->
         <div id="map-embed"
              class="map-placeholder"
              data-src="https://www.google.com/maps?q=Boschstraße,+86695+Nordendorf&output=embed"
              aria-label="Google Maps (lädt erst nach Zustimmung)">
           <div class="map-placeholder-inner">
             <div>
-              <div class="map-note">
-                Diese Karte wird von Google geladen und kann Cookies setzen.
-              </div>
-              <button type="button" class="btn" onclick="acceptOneAndLoad('maps')">
-                Karte laden
-              </button>
+              <div class="map-note">Diese Karte wird von Google geladen und kann Cookies setzen.</div>
+              <button type="button" class="btn" onclick="acceptOneAndLoad('maps')">Karte laden</button>
             </div>
           </div>
         </div>
 
-        <div class="small" style="margin-top:6px">
-          <a href="https://www.google.com/maps/search/?api=1&query=Boschstraße,+86695+Nordendorf"
-             target="_blank" rel="noopener">
-            In Google Maps öffnen
-          </a>
-        </div>
+        <div class="small" style="margin-top:6px"><a href="https://www.google.com/maps/search/?api=1&query=Boschstraße,+86695+Nordendorf" target="_blank" rel="noopener">In Google Maps öffnen</a></div>
       </aside>
     </div>
   </section>
@@ -837,10 +376,7 @@
         </p>
       </div>
       <div>
-        <p class="small">
-          © <span id="y"></span> Seeglanzevent – Hochzeits- &amp; Eventlocation.
-          Alle Rechte vorbehalten.
-        </p>
+        <p class="small">© <span id="y"></span> Seeglanzevent – Hochzeits- & Eventlocation in Nordendorf bei Augsburg. Alle Rechte vorbehalten.</p>
       </div>
     </div>
   </footer>
@@ -850,52 +386,61 @@
     <div class="cc-wrap">
       <div class="cc-grid">
         <div>
-          <div class="cc-head">Cookies &amp; externe Inhalte</div>
-
-          <div class="small" style="line-height:1.5">
-            Wir verwenden nur zwingend notwendige Cookies.
-            Für externe Inhalte (z.&nbsp;B. Google Maps) benötigen wir deine Zustimmung.
-            Details in der
-            <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>.
+          <div class="cc-head">Cookies & externe Inhalte</div>
+          <div class="cc-text small">
+            Wir verwenden nur zwingend notwendige Cookies. Für externe Inhalte (z.&nbsp;B. Google Maps)
+            benötigen wir deine Zustimmung. Details in der <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutz­erklärung</a>.
           </div>
 
-          <label class="cc-pill" title="Immer aktiv und ohne Zustimmung">
-            <input type="checkbox" checked disabled>
-            Funktional (erforderlich)
+          <label class="cc-pill" title="Immer aktiv">
+            <input type="checkbox" checked disabled> Funktional (erforderlich)
           </label>
-
           <label class="cc-pill">
-            <input id="cc-maps" type="checkbox">
-            Google&nbsp;Maps (externe Inhalte)
+            <input id="cc-maps" type="checkbox"> Google&nbsp;Maps (externe Inhalte)
           </label>
 
-          <div class="cc-link">
-            Du kannst deine Auswahl jederzeit im Footer unter
-            „Cookie-Einstellungen“ ändern.
-          </div>
+          <div class="cc-link small">Du kannst deine Auswahl jederzeit im Footer unter „Cookie-Einstellungen“ ändern.</div>
         </div>
 
         <div class="cc-actions">
-          <button type="button" class="cc-btn cc-btn-ghost" onclick="ccReject()">
-            Nur notwendige
-          </button>
-          <button type="button" class="cc-btn" onclick="ccSave()">
-            Auswahl speichern
-          </button>
-          <button type="button" class="cc-btn cc-btn-primary" onclick="ccAcceptAll()">
-            Alle akzeptieren
-          </button>
+          <button type="button" class="cc-btn cc-btn-ghost" onclick="ccReject()">Nur notwendige</button>
+          <button type="button" class="cc-btn" onclick="ccSave()">Auswahl speichern</button>
+          <button type="button" class="cc-btn cc-btn-primary" onclick="ccAcceptAll()">Alle akzeptieren</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Seeglanzevent – Hochzeits- & Eventlocation",
+    "description": "Rustikale Hochzeitslocation und Eventlocation im Hütten-Style in Nordendorf bei Augsburg. Platz für 140 Gäste innen und 300 Gäste im Außenbereich, ideal für Hochzeiten, freie Trauungen, Firmenfeiern und Jubiläen.",
+    "url": "https://seeglanzevent.de/",
+    "telephone": "+49 1556 5629161",
+    "email": "hallo@seeglanzevent.de",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Boschstraße",
+      "addressLocality": "Nordendorf",
+      "postalCode": "86695",
+      "addressCountry": "DE"
+    },
+    "areaServed": "Augsburg, Schwaben, Bayern",
+    "sameAs": [
+      "https://www.google.com/maps/search/?api=1&query=Seeglanzevent+Nordendorf"
+    ]
+  }
+  </script>
 
   <script>
     // Jahr im Footer
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 
-  <!-- CMS-Content Loader (Content aus /content/content.json ins DOM mergen) -->
+  <!-- CMS-Content Loader -->
   <script>
   (async function(){
     try{
@@ -924,56 +469,39 @@
       if(tel && data.kontakt?.telefon){
         tel.textContent = data.kontakt.telefon;
         tel.href = 'tel:'+ data.kontakt.telefon.replace(/\s+/g,'');
-      } else {
-        // Fallback auf unsere feste Nummer
-        if(tel){
-          tel.textContent = '+49 1556 5629161';
-          tel.href = 'tel:+4915565629161';
-        }
       }
-
       if(mail && data.kontakt?.email){
         mail.textContent = data.kontakt.email;
         mail.href = 'mailto:'+ data.kontakt.email;
       }
-
       if(addr && data.kontakt?.adresse){
-        addr.innerHTML =
-          '<strong>Seeglanzevent – Hochzeitslocation</strong><br> '+
-          data.kontakt.adresse;
+        addr.innerHTML = '<strong>Seeglanzevent – Hochzeitslocation</strong><br> '+ data.kontakt.adresse;
       }
 
       const gal = document.getElementById('gallery');
       if(gal && Array.isArray(data.galerie)){
         gal.innerHTML = '';
         data.galerie.forEach(function(item,i){
-          const src = typeof item === 'string'
-            ? item
-            : (item?.src || item?.image || item?.item || '');
+          const src = typeof item === 'string' ? item : (item?.src || item?.image || item?.item || '');
           if(!src) return;
           var img = document.createElement('img');
           img.src = src;
-          img.alt = 'Galerie Bild '+(i+1)+' – Seeglanzevent Hochzeitslocation bei Augsburg';
+          img.alt = 'Galeriebild Seeglanzevent ' + (i+1);
           img.loading = 'lazy';
           if(i===0) img.classList.add('tall');
           if(i===3) img.classList.add('wide');
           gal.appendChild(img);
         });
       }
-    }catch(e){
-      console.warn('CMS-Content konnte nicht geladen werden:', e);
-    }
+    }catch(e){ console.warn('CMS-Content konnte nicht geladen werden:', e); }
   })();
   </script>
 
-  <!-- Tracking-Felder füllen (UTM etc.) -->
+  <!-- Tracking-Felder füllen -->
   <script>
   (function(){
     var p = new URLSearchParams(location.search);
-    function set(name, val){
-      var el = document.querySelector('[name="'+name+'"]');
-      if (el) el.value = val || '';
-    }
+    function set(name, val){ var el = document.querySelector('[name="'+name+'"]'); if (el) el.value = val || ''; }
     set('page', location.pathname + location.search);
     set('utm_source', p.get('utm_source'));
     set('utm_medium', p.get('utm_medium'));
@@ -990,42 +518,26 @@
       try { return JSON.parse(localStorage.getItem(CONSENT_KEY) || '{}'); }
       catch(e){ return {}; }
     }
-    function setConsent(c){
-      localStorage.setItem(CONSENT_KEY, JSON.stringify(c));
-    }
-    function showBanner(){
-      document.getElementById('cc-banner')?.removeAttribute('hidden');
-    }
-    function hideBanner(){
-      document.getElementById('cc-banner')?.setAttribute('hidden','');
-    }
+    function setConsent(c){ localStorage.setItem(CONSENT_KEY, JSON.stringify(c)); }
+    function showBanner(){ document.getElementById('cc-banner')?.removeAttribute('hidden'); }
+    function hideBanner(){ document.getElementById('cc-banner')?.setAttribute('hidden',''); }
 
     function applyConsent(){
       const c = getConsent();
       if (c.maps) loadMap();
-      // Platz für weitere Kategorien (Analytics etc.)
     }
 
     function ccAcceptAll(){
       const c = { necessary:true, maps:true };
-      setConsent(c);
-      hideBanner();
-      applyConsent();
+      setConsent(c); hideBanner(); applyConsent();
     }
     function ccReject(){
       const c = { necessary:true, maps:false };
-      setConsent(c);
-      hideBanner();
-      applyConsent();
+      setConsent(c); hideBanner(); applyConsent();
     }
     function ccSave(){
-      const c = {
-        necessary:true,
-        maps: !!document.getElementById('cc-maps')?.checked
-      };
-      setConsent(c);
-      hideBanner();
-      applyConsent();
+      const c = { necessary:true, maps: !!document.getElementById('cc-maps')?.checked };
+      setConsent(c); hideBanner(); applyConsent();
     }
     function openConsent(){
       showBanner();
@@ -1033,25 +545,17 @@
       const chk=document.getElementById('cc-maps');
       if(chk) chk.checked=!!c.maps;
     }
-
-    // Einmalige Zustimmung nur für Maps über den Button "Karte laden"
     function acceptOneAndLoad(category){
       const c = getConsent();
-      if (category === 'maps'){
-        c.maps = true;
-        setConsent(c);
-        applyConsent();
-        hideBanner();
-      }
+      if (category === 'maps'){ c.maps = true; setConsent(c); applyConsent(); hideBanner(); }
     }
 
-    // Map dynamisch laden
     function loadMap(){
       const wrap = document.getElementById('map-embed');
       if (!wrap || wrap.dataset.loaded) return;
       const src = wrap.dataset.src;
       const iframe = document.createElement('iframe');
-      iframe.title = 'Seeglanzevent Karte – Boschstraße, 86695 Nordendorf';
+      iframe.title = 'Seeglanzevent Karte';
       iframe.width = '100%';
       iframe.height = '220';
       iframe.loading = 'lazy';
@@ -1064,7 +568,6 @@
       wrap.dataset.loaded = '1';
     }
 
-    // Init Banner / Consent bei Laden
     (function(){
       const existing = getConsent();
       if (typeof existing.necessary === 'undefined'){
